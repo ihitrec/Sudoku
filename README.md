@@ -39,9 +39,13 @@ There does not seem to be a lot of research available on what a typical Sudoku p
 The website is a simple, single-page game and no advanced structure is necessary. Main focus will be the Sudoku grid which will be surrounded by other features. The number keyboard should be on the bottom while on mobile since it is easy to reach. The only feature that will lead from the main page will be the instructions. They will be implemented via modal which has an easy navigation.
 
 #### Skeleton
-Desktop and mobile wireframes will be added.
+[Mobile wireframe](assets/images/README_images/mobile-wireframe.png)  
+[Desktop wireframe](assets/images/README_images/desktop-wireframe.png)
+
+
+> The wireframes are not to complex and just show the general layout which will more than likely be improved upon.
 
 
 #### Surface
-Since the game of Sudoku is analytical, a more serious, non-script font type will be used.
+Since the game of Sudoku is analytical, a more serious, non-script font type will be used. 
 
