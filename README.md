@@ -1,5 +1,5 @@
 # Sudoku
-The aim of this project is to create a grid based number puzzle called Sudoku. 
+The aim of this project is to create a grid based number puzzle called Sudoku. It will have a simple, one page design and different features that make the game more enjoyable.
   
 This is the second project in Code Institute Full Stack Developer program based on HTML, CSS, JavaScript and optional frameworks.
 
@@ -25,7 +25,7 @@ There does not seem to be a lot of research available on what a typical Sudoku p
 
 #### Scope
 
-1. The game should is playable and offers the same experience across different devices. This means that a number keyboard is on screen to enable mobile inputs.
+1. The game should be playable and offers the same experience across different devices. This means that a number keyboard is on screen to enable mobile inputs.
 2. The minimum playable version includes a premade grid, a win/lose scenario when the grid is filled and a new game button.
 3. Game instructions are included.
 4. Grid difficulty options for premade grids are available.
@@ -33,7 +33,7 @@ There does not seem to be a lot of research available on what a typical Sudoku p
 6. A hint button is available.
 7. A generator should generate a new grid each game.
 
-> This list should be done in order as the tasks were defined in the strategy plane. When it comes to grid generator, it is not something that necessary improves the game since the difficulty is not generated. From the users perspective it is not important, but as it is the hardest thing to do and it is a good JavaScript challenge, it might still be included.
+> This list should be done in order as the tasks were defined in the strategy plane. When it comes to grid generator, it is not something that necessary improves the game since the difficulty is not generated. From the users perspective it is not an important, but as it is the hardest thing to do and it is a good JavaScript challenge, it might still be included.
 
 #### Structure
 The website is a simple, single-page game and no advanced structure is necessary. Main focus will be the Sudoku grid which will be surrounded by other features. The number keyboard should be on the bottom while on mobile since it is easy to reach. The only feature that will lead from the main page will be the instructions. They will be implemented via modal which has an easy navigation.
