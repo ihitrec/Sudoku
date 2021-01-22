@@ -33,7 +33,7 @@ There does not seem to be a lot of research available on what a typical Sudoku p
 6. A hint button is available.
 7. A generator should generate a new grid each game.
 
-> This list should be done in order as the tasks were defined in the strategy plane. When it comes to grid generator, it is not something that necessary improves the game since the difficulty is not generated. From the users perspective it is not an important, but as it is the hardest thing to do and it is a good JavaScript challenge, it might still be included.
+> This list should be done in order as the tasks were defined in the strategy plane. When it comes to grid generator, it is not something that necessary improves the game since the difficulty is not generated. From the users perspective it is not as important, but as it is the hardest thing to do and it is a good JavaScript challenge, it might still be included.
 
 #### Structure
 The website is a simple, single-page game and no advanced structure is necessary. Main focus will be the Sudoku grid which will be surrounded by other features. The number keyboard should be on the bottom while on mobile since it is easy to reach. The only feature that will lead from the main page will be the instructions. They will be implemented via modal which has an easy navigation.
