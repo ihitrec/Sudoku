@@ -3,6 +3,9 @@
 body{
     background-color: ghostwhite;
 }
+
+/* START ------------------------------------------------------------ Table style */
+
 table{
     margin: 20px auto;
     width: 450px;
@@ -12,11 +15,7 @@ table{
     border: 1.5px solid gray;
     font-family: "Quicksand", sans-serif;
     font-size: 27px;
-
-}
-td{
-    border:1px solid gainsboro;
-    
+    background-color: aliceblue;
 }
 .double-border{
     border-right: 1.5px solid gray;
@@ -25,13 +24,12 @@ td{
     border-bottom: 1.5px solid gray;
 }
 td{
+    border:1px solid gainsboro;
     outline: none;
-    width: 100px;}
-table{
-    background-color: aliceblue;
+    width: 100px;
 }
 
-/* Correct and wrong colors for later
+ /* Correct and wrong colors for later */
 .wrong{
     background-color:#e01717;
     opacity: .76;
@@ -40,4 +38,23 @@ table{
     background-color:forestgreen;
     opacity: .85;
 }
-*/
+
+/* Table style -------------------------------------------------------------- END */
+
+/* START ------------------------------------------------------------ Numpad style */
+
+#numpad{
+    font-size: 45px;
+    font-family: 'Quicksand';
+    text-align: center;
+    font-weight: 100;
+}
+.num{
+    margin:5px;
+}
+
+/* Numpad style -------------------------------------------------------------- END */
+
+
+
+

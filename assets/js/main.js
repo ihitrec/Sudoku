@@ -23,13 +23,11 @@ let lastPressed = [];
 function selectedCell() {
     lastPressed = [];
     lastPressed.push(this.event.path[0])
-    return lastPressed;
-
 }
 
 // Enter the pressed number on numpad into the last selected cell.
 
-$("p").attr("onclick", "numPad()")
+$(".num").attr("onclick", "numPad()")
 
 function numPad() {
     console.log(lastPressed);
