@@ -5,7 +5,6 @@ $("td").attr("contenteditable", "true");
 // Add a key up function on each cell, if entered key is a number, keep it. Otherwise delete it.
 $("td").attr("onkeyup", "isNum()");
 
-
 function isNum() {
     let whichCell = this.event.path[0];
     if (Number.isNaN(parseInt(this.event.key)) == false && this.event.key !== "0") {
@@ -16,26 +15,28 @@ function isNum() {
     }
 }
 
-// Add a click function on each cell. Push the last selected cell into an array.
-
-// Testing mobile imputs, have to push to check if it works
+//  Disables phone keyboard from popping up
 function disableMobile() {
     setTimeout(function () {
         $("td").attr("contenteditable", "false");
         $("td").attr("contenteditable", "true");
     });
 }
+
+// Add a click function on each cell. Push the last selected cell into an array. 
+// Call disableMobile on selected screens.
 $("td").attr("onclick", "selectedCell()")
 
 let lastPressed = [];
 function selectedCell() {
     lastPressed = [];
     lastPressed.push(this.event.path[0]);
-    disableMobile();
+    if (window.innerWidth < 1000) {
+        disableMobile();
+    }
 }
 
-// Enter the pressed number on numpad into the last selected cell.
-
+// Enter the pressed number on numpad into the last selected cell
 $(".num").attr("onclick", "numPad()")
 
 function numPad() {
