@@ -49,3 +49,9 @@ The website is a simple, single-page game and no advanced structure is necessary
 #### Surface
 Since the game of Sudoku is analytical, a more serious, non-script font type will be used. 
 
+## Testing 
+
+### Responsiveness
+
+Since the screen is smaller on mobile, there is a numpad on the website. Having a mobile keyboard pop up every time a field is selected would not be an enjoyable experience. Therfore, the keyboard is disabled on screens with the width smaller than 1000.  
+

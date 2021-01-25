@@ -25,7 +25,7 @@ function disableMobile() {
 
 // Add a click function on each cell. Push the last selected cell into an array. 
 // Call disableMobile on selected screens.
-$("td").attr("onclick", "selectedCell()")
+$("td").attr("onclick", "selectedCell()");
 
 let lastPressed = [];
 function selectedCell() {
@@ -37,7 +37,7 @@ function selectedCell() {
 }
 
 // Enter the pressed number on numpad into the last selected cell
-$(".num").attr("onclick", "numPad()")
+$(".num").attr("onclick", "numPad()");
 
 function numPad() {
     console.log(lastPressed);
