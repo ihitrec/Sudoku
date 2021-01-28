@@ -30,10 +30,12 @@ $(document).ready(function () {
 
     let lastPressed = [];
     function selectedCell() {
+        $(lastPressed[0]).removeClass("mobile-focus");
         lastPressed = [];
         lastPressed.push(this);
         if (window.innerWidth < 1000) {
             disableMobile();
+            $(lastPressed[0]).addClass("mobile-focus");
         }
     }
 
