@@ -43,7 +43,7 @@ The website is a simple, single-page game and no advanced structure is necessary
 [Desktop wireframe](assets/images/README_images/desktop-wireframe.png)
 
 
-> The wireframes are not to complex and just show the general layout which will more than likely be improved upon.
+> The wireframes are not too complex and just show the general layout which will more than likely be improved upon.
 
 
 #### Surface
@@ -51,7 +51,16 @@ Since the game of Sudoku is analytical, a more serious, non-script font type wil
 
 ## Testing 
 
+### Browser Compatibility
+
+- Testing for desktop will be done on Mozilla Firefox, Google Chrome, Microsoft Edge and Opera. It will not be tested on Internet Explorer since the support for it is ending soon and most websites already do not support it.  
+
+- Mobile testing will be done on Safari, Samsung Internet and Google Chrome for mobile on different devices.
+
 ### Responsiveness
 
-Since the screen is smaller on mobile, there is a numpad on the website. Having a mobile keyboard pop up every time a field is selected would not be an enjoyable experience. Therfore, the keyboard is disabled on screens with the width smaller than 1000.  
+Since the screen is smaller on mobile, there is a numpad on the website. Having a mobile keyboard pop up every time a field is selected would not be an enjoyable experience. Therefore, the keyboard is disabled on screens with the width smaller than 1000.  
 
+### Bugs
+
+- A function(disableMobile) used to disable mobile keyboards was making the keyboard occasionally pop up and disappear. A timeout function was added to enable the input again after 100 milliseconds which fixed the issue.
