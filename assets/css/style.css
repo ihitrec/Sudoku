@@ -26,9 +26,10 @@ table{
 td{
     border:1px solid gainsboro;
     outline: none;
-    width: 100px;
+    width: 50px;
     color: transparent;
     text-shadow: 0 0 black;
+    height: 50px;
 }
 td:focus{
     background-color: #c9e0f5;
