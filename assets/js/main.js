@@ -3,10 +3,9 @@ $(document).ready(function () {
     let lastSelectedNum;
 
     // Premade grids
-
     let grid1 = [6, 5, 9, "", 1, "", 2, 8, "", 1, "", "", "", 5, "", "", 3, "", 2, "", "", 8, "", "", "", 1, "", "", "", "", 1, 3, 5, "", 7, "", 8, "", "", 9, "", "", "", "", 2, "", "", 3, "", 7, 8, 6, 4, "", 3, "", 2, "", "", 9, "", "", 4, "", "", "", "", "", 1, 8, "", "", "", "", 8, 7, 6, "", "", "", ""];
 
-    // Transfer all cells to new array to manipulate it
+    // Transfer all cells to new array to manipulate it.
     let cellArray = [];
     let cellArrayItems = document.getElementsByTagName("td");
     for (i = 0; i < cellArrayItems.length; i++) {
@@ -19,7 +18,6 @@ $(document).ready(function () {
     // Add a key up function on each cell, if entered key is a number, keep it. Otherwise delete it.
     // Check if entered value is correct.
     $("td").keyup(isNum);
-
     function isNum() {
         let whichCell = this;
         if (Number.isNaN(parseInt(event.key)) == false && event.key !== "0") {
@@ -32,7 +30,7 @@ $(document).ready(function () {
         }
     }
 
-    //  Disable phone keyboard from popping up
+    //  Disable phone keyboard from popping up.
     function disableMobile() {
         $("td").attr("contenteditable", "false");
         setTimeout(function () {
@@ -43,20 +41,18 @@ $(document).ready(function () {
     // Add a click function on each cell. Push the last selected cell into an array. 
     // Call disableMobile on selected screens.
     $("td").click(selectedCell);
-
     let lastPressed = [];
     function selectedCell() {
-        $(lastPressed[0]).removeClass("mobile-focus");
+        $(lastPressed[0]).removeClass("focused");
         lastPressed = [];
         lastPressed.push(this);
+        $(lastPressed[0]).addClass("focused");
         if (window.innerWidth < 1000) {
             disableMobile();
-            $(lastPressed[0]).addClass("mobile-focus");
         }
     }
 
-
-    // Enter the pressed number on numpad into the last selected cell
+    // Enter the pressed number on numpad into the last selected cell.
     $(".num").click(numPad);
     function numPad() {
         if ($(lastPressed[0]).attr("contenteditable") === "true") {
@@ -64,17 +60,15 @@ $(document).ready(function () {
             lastSelectedNum = this.innerText;
             enteredValueCheck();
         }
-
     }
 
-    // Start a new game which fills the grid with the pre-made template
+    // Start a new game which fills the grid with the pre-made template.
     $("button").click(newGame);
-
     function newGame() {
+        $("td").text("");
         $("td").attr("contenteditable", "true");
         gridTemplate();
     }
-
     function gridTemplate() {
         for (i = 0; i < grid1.length; i++) {
             if (typeof grid1[i] === "number") {
@@ -84,43 +78,46 @@ $(document).ready(function () {
         }
     }
 
-    // Check same column if the entered value is correct , delete it if not
+    // Check same column if the entered value is correct, delete it if not.
     function enteredValueCheck() {
+
+        // Get cells in the same column.
+        let sameColumn = [];
         let reduceToSameColumn = cellArray.indexOf(lastPressed[0]);
         if (reduceToSameColumn > 8) {
             let fitsHowMany = Math.floor(reduceToSameColumn / 9);
             reduceToSameColumn = reduceToSameColumn - (9 * fitsHowMany);
         }
-
-        let sameColumn = [];
-
         for (j = reduceToSameColumn; j < 81; j += 9) {
             sameColumn.push(cellArray[j]);
         }
-
         let removeACell = sameColumn.indexOf(lastPressed[0]);
         sameColumn.splice(removeACell, 1);
 
+        // If selected cell input matches any of the ones in the same column, mark it as wrong.
+        // Otherwise mark it as correct.
         for (i = 0; i < sameColumn.length; i++) {
             if (sameColumn[i].innerText === lastPressed[0].innerText) {
+                $(lastPressed[0]).attr("contenteditable", "false");
                 $(sameColumn[i]).addClass("wrong");
                 $(lastPressed[0]).addClass("wrong");
                 setTimeout(function () {
                     $(sameColumn[i]).removeClass("wrong");
                     $(lastPressed[0]).removeClass("wrong");
                     lastPressed[0].innerText = "";
-                }, 600)
-                console.log(i);
+                    $(lastPressed[0]).attr("contenteditable", "true");
+                    $(lastPressed[0]).focus();
+                }, 600);
                 break;
-            } else if (i === 8 - 1) {
+            } else if (i === 7) {
                 $(lastPressed[0]).attr("contenteditable", "false");
                 $(lastPressed[0]).addClass("correct");
                 setTimeout(function () {
                     $(lastPressed[0]).removeClass("correct");
-
-                }, 600)
+                    console.log(lastPressed);
+                    console.log("done");
+                }, 600);
             }
         }
-
     };
 });
