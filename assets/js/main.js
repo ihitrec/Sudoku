@@ -44,5 +44,28 @@ $(document).ready(function () {
     function numPad() {
         lastPressed[0].innerText = this.innerText;
     }
+
+    // Start a new game which fills the grid with the pre-made template
+    $("button").click(newGame);
+
+    function newGame() {
+        $("td").attr("contenteditable", "true");
+        gridTemplate();
+    }
+
+    let grid1 = [6, 5, 9, "", 1, "", 2, 8, "", 1, "", "", "", 5, "", "", 3, "", 2, "", "", 8, "", "", "", 1, "", "", "", "", 1, 3, 5, "", 7, "", 8, "", "", 9, "", "", "", "", 2, "", "", 3, "", 7, 8, 6, 4, "", 3, "", 2, "", "", 9, "", "", 4, "", "", "", "", "", 1, 8, "", "", "", "", 8, 7, 6, "", "", "", ""];
+    let cellArray = $("td");
+
+    function gridTemplate() {
+        for (i = 0; i < grid1.length; i++) {
+            if (typeof grid1[i] === "number") {
+                cellArray[i].innerText = grid1[i];
+                $(cellArray[i]).attr("contenteditable", "false");
+            }
+
+        }
+    }
+
+
 });
 
