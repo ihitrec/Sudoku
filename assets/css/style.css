@@ -39,9 +39,8 @@ td:focus{
     background-color: #c9e0f5;
 }
 
- /* Correct and wrong colors for later */
 .wrong{
-    background-color:#e01717;
+    background-color:#e01717 !important;
     opacity: .76;
 }
 .correct{
