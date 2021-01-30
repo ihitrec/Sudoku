@@ -30,7 +30,7 @@ $(document).ready(function () {
         }
     }
 
-    //  Disable phone keyboard from popping up.
+    //  Disable mobile keyboard from popping up.
     function disableMobile() {
         $("td").attr("contenteditable", "false");
         setTimeout(function () {
@@ -96,26 +96,29 @@ $(document).ready(function () {
 
         // If selected cell input matches any of the ones in the same column, mark it as wrong.
         // Otherwise mark it as correct.
-        for (i = 0; i < sameColumn.length; i++) {
-            if (sameColumn[i].innerText === lastPressed[0].innerText) {
-                $(lastPressed[0]).attr("contenteditable", "false");
-                $(sameColumn[i]).addClass("wrong");
-                $(lastPressed[0]).addClass("wrong");
+        for (i = 0; i < 8; i++) {
+            let savedLP = $(lastPressed[0]);
+            let savedCol = sameColumn;
+            function savedCol1(i) {
+                return $(savedCol[i]);
+            }
+            if (savedCol1(i).text() === savedLP.text()) {
+                savedCol1(i).attr("contenteditable", "false");
+                savedCol1(i).addClass("wrong");
+                savedLP.addClass("wrong");
                 setTimeout(function () {
-                    $(sameColumn[i]).removeClass("wrong");
-                    $(lastPressed[0]).removeClass("wrong");
-                    lastPressed[0].innerText = "";
-                    $(lastPressed[0]).attr("contenteditable", "true");
-                    $(lastPressed[0]).focus();
+                    savedCol1(i).removeClass("wrong");
+                    savedLP.removeClass("wrong");
+                    savedLP.text("");
+                    savedLP.attr("contenteditable", "true");
+                    lastPressed[0].focus();
                 }, 600);
                 break;
             } else if (i === 7) {
-                $(lastPressed[0]).attr("contenteditable", "false");
-                $(lastPressed[0]).addClass("correct");
+                savedLP.attr("contenteditable", "false");
+                savedLP.addClass("correct");
                 setTimeout(function () {
-                    $(lastPressed[0]).removeClass("correct");
-                    console.log(lastPressed);
-                    console.log("done");
+                    savedLP.removeClass("correct");
                 }, 600);
             }
         }
