@@ -82,7 +82,7 @@ $(document).ready(function () {
         }
     }
 
-    // Check same column if the entered value is correct, delete it if not.
+    // Check entered value.
     function enteredValueCheck() {
 
         // Get cells in the same column.
@@ -95,9 +95,7 @@ $(document).ready(function () {
         for (j = reduceToSameColumn; j < 81; j += 9) {
             sameColumn.push(cellArray[j]);
         }
-
-        reduceToSameRow = cellArray.indexOf(sameColumn[0]);  // Belongs to same row
-
+        reduceToSameRow = cellArray.indexOf(sameColumn[0]);// Belongs to same row part
         let removeACell = sameColumn.indexOf(lastPressed[0]);
         sameColumn.splice(removeACell, 1);
 
@@ -112,12 +110,28 @@ $(document).ready(function () {
             }
         }
 
-        // If selected cell input matches any of the ones in the same column or row, mark it as wrong.
+        // Variables local to function.
+        let savedLP = $(lastPressed[0]);
+        let savedCol = sameColumn;
+        let savedRow = sameRow;
+
+        // Executes if inputed cell is wrong in the loop
+        function itsWrong(p1, i) {
+            p1(i).attr("contenteditable", "false");
+            p1(i).addClass("wrong");
+            savedLP.addClass("wrong");
+            setTimeout(function () {
+                p1(i).removeClass("wrong");
+                savedLP.removeClass("wrong");
+                savedLP.text("");
+                savedLP.attr("contenteditable", "true");
+                lastPressed[0].focus();
+            }, 600);
+        }
+
+        // If selected cell input matches any of the ones in the same column or row, call itsWrong().
         // Otherwise mark it as correct.
         for (i = 0; i < 8; i++) {
-            let savedLP = $(lastPressed[0]);
-            let savedCol = sameColumn;
-            let savedRow = sameRow;
             function targetCol(i) {
                 return $(savedCol[i]);
             }
@@ -125,28 +139,10 @@ $(document).ready(function () {
                 return $(savedRow[i]);
             }
             if (targetCol(i).text() === savedLP.text()) {
-                targetCol(i).attr("contenteditable", "false");
-                targetCol(i).addClass("wrong");
-                savedLP.addClass("wrong");
-                setTimeout(function () {
-                    targetCol(i).removeClass("wrong");
-                    savedLP.removeClass("wrong");
-                    savedLP.text("");
-                    savedLP.attr("contenteditable", "true");
-                    lastPressed[0].focus();
-                }, 600);
+                itsWrong(targetCol, i);
                 break;
             } else if (targetRow(i).text() === savedLP.text()) {
-                targetRow(i).attr("contenteditable", "false");
-                targetRow(i).addClass("wrong");
-                savedLP.addClass("wrong");
-                setTimeout(function () {
-                    targetRow(i).removeClass("wrong");
-                    savedLP.removeClass("wrong");
-                    savedLP.text("");
-                    savedLP.attr("contenteditable", "true");
-                    lastPressed[0].focus();
-                }, 600);
+                itsWrong(targetRow, i);
                 break;
             } else if (i === 7) {
                 savedLP.attr("contenteditable", "false");
