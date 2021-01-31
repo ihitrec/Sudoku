@@ -5,6 +5,10 @@ $(document).ready(function () {
     // Premade grids
     let grid1 = [6, 5, 9, "", 1, "", 2, 8, "", 1, "", "", "", 5, "", "", 3, "", 2, "", "", 8, "", "", "", 1, "", "", "", "", 1, 3, 5, "", 7, "", 8, "", "", 9, "", "", "", "", 2, "", "", 3, "", 7, 8, 6, 4, "", 3, "", 2, "", "", 9, "", "", 4, "", "", "", "", "", 1, 8, "", "", "", "", 8, 7, 6, "", "", "", ""];
 
+    // Premade grids filled
+    grid1Fill = [6, 5, 9, 3, 1, 4, 2, 8, 7, 1, 8, 7, 6, 5, 2, 4, 3, 9, 2, 3, 4, 8, 9, 7, 5, 1, 6, 4, 2, 6, 1, 3, 5, 9, 7, 8, 8, 7, 1, 9, 4, 6, 3, 5, 2, 5, 9, 3, 2, 7, 8, 6, 4, 1, 3, 1, 2, 5, 8, 9, 7, 6, 4, 7, 6, 5, 4, 2, 1, 8, 9, 3, 9, 4, 8, 7, 6, 3, 1, 2, 5];
+
+
     // Transfer all cells to new array to manipulate it.
     let cellArray = [];
     let cellArrayItems = document.getElementsByTagName("td");
@@ -91,23 +95,53 @@ $(document).ready(function () {
         for (j = reduceToSameColumn; j < 81; j += 9) {
             sameColumn.push(cellArray[j]);
         }
+
+        reduceToSameRow = cellArray.indexOf(sameColumn[0]);  // Belongs to same row
+
         let removeACell = sameColumn.indexOf(lastPressed[0]);
         sameColumn.splice(removeACell, 1);
 
-        // If selected cell input matches any of the ones in the same column, mark it as wrong.
+        // Get cells in the same row.
+        let sameRow = [];
+        let firstRowIndex = cellArray.indexOf(lastPressed[0]) - reduceToSameRow;
+        for (nineTimes = 0; nineTimes < 9; nineTimes++) {
+            if (nineTimes === reduceToSameRow) {
+                continue;
+            } else {
+                sameRow.push(cellArray[firstRowIndex + nineTimes]);
+            }
+        }
+
+        // If selected cell input matches any of the ones in the same column or row, mark it as wrong.
         // Otherwise mark it as correct.
         for (i = 0; i < 8; i++) {
             let savedLP = $(lastPressed[0]);
             let savedCol = sameColumn;
-            function savedCol1(i) {
+            let savedRow = sameRow;
+            function targetCol(i) {
                 return $(savedCol[i]);
             }
-            if (savedCol1(i).text() === savedLP.text()) {
-                savedCol1(i).attr("contenteditable", "false");
-                savedCol1(i).addClass("wrong");
+            function targetRow(i) {
+                return $(savedRow[i]);
+            }
+            if (targetCol(i).text() === savedLP.text()) {
+                targetCol(i).attr("contenteditable", "false");
+                targetCol(i).addClass("wrong");
                 savedLP.addClass("wrong");
                 setTimeout(function () {
-                    savedCol1(i).removeClass("wrong");
+                    targetCol(i).removeClass("wrong");
+                    savedLP.removeClass("wrong");
+                    savedLP.text("");
+                    savedLP.attr("contenteditable", "true");
+                    lastPressed[0].focus();
+                }, 600);
+                break;
+            } else if (targetRow(i).text() === savedLP.text()) {
+                targetRow(i).attr("contenteditable", "false");
+                targetRow(i).addClass("wrong");
+                savedLP.addClass("wrong");
+                setTimeout(function () {
+                    targetRow(i).removeClass("wrong");
                     savedLP.removeClass("wrong");
                     savedLP.text("");
                     savedLP.attr("contenteditable", "true");
