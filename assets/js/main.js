@@ -6,7 +6,7 @@ $(document).ready(function () {
     let grid1 = [6, 5, 9, "", 1, "", 2, 8, "", 1, "", "", "", 5, "", "", 3, "", 2, "", "", 8, "", "", "", 1, "", "", "", "", 1, 3, 5, "", 7, "", 8, "", "", 9, "", "", "", "", 2, "", "", 3, "", 7, 8, 6, 4, "", 3, "", 2, "", "", 9, "", "", 4, "", "", "", "", "", 1, 8, "", "", "", "", 8, 7, 6, "", "", "", ""];
 
     // Premade grids filled
-    grid1Fill = [6, 5, 9, 3, 1, 4, 2, 8, 7, 1, 8, 7, 6, 5, 2, 4, 3, 9, 2, 3, 4, 8, 9, 7, 5, 1, 6, 4, 2, 6, 1, 3, 5, 9, 7, 8, 8, 7, 1, 9, 4, 6, 3, 5, 2, 5, 9, 3, 2, 7, 8, 6, 4, 1, 3, 1, 2, 5, 8, 9, 7, 6, 4, 7, 6, 5, 4, 2, 1, 8, 9, 3, 9, 4, 8, 7, 6, 3, 1, 2, 5];
+    grid1Solved = [6, 5, 9, 3, 1, 4, 2, 8, 7, 1, 8, 7, 6, 5, 2, 4, 3, 9, 2, 3, 4, 8, 9, 7, 5, 1, 6, 4, 2, 6, 1, 3, 5, 9, 7, 8, 8, 7, 1, 9, 4, 6, 3, 5, 2, 5, 9, 3, 2, 7, 8, 6, 4, 1, 3, 1, 2, 5, 8, 9, 7, 6, 4, 7, 6, 5, 4, 2, 1, 8, 9, 3, 9, 4, 8, 7, 6, 3, 1, 2, 5];
 
 
     // Transfer all cells to new array to manipulate it.
@@ -112,6 +112,8 @@ $(document).ready(function () {
 
         // Variables local to function.
         let savedLP = $(lastPressed[0]);
+        let savedLP2 = lastPressed[0];
+        let actualValue = grid1Solved[cellArray.indexOf(savedLP2)].toString();
         let savedCol = sameColumn;
         let savedRow = sameRow;
 
@@ -144,6 +146,14 @@ $(document).ready(function () {
             } else if (targetRow(i).text() === savedLP.text()) {
                 itsWrong(targetRow, i);
                 break;
+            } else if (savedLP.text() !== actualValue) {
+                savedLP.addClass("wrong");
+                setTimeout(function () {
+                    savedLP.removeClass("wrong");
+                    savedLP.text("");
+                    savedLP.attr("contenteditable", "true");
+                    lastPressed[0].focus();
+                }, 600);
             } else if (i === 7) {
                 savedLP.attr("contenteditable", "false");
                 savedLP.addClass("correct");
