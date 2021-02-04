@@ -34,16 +34,17 @@ $(document).ready(function () {
         }
     }
 
-    //  Disable mobile keyboard from popping up.
+    //  Disable mobile keyboard from popping up on selected screens.
     function disableMobile() {
-        $("td").attr("contenteditable", "false");
-        setTimeout(function () {
-            $("td").attr("contenteditable", "true");
-        }, 100);
+        if (window.innerWidth < 1000) {
+            $("td").attr("contenteditable", "false");
+            setTimeout(function () {
+                $("td").attr("contenteditable", "true");
+            }, 100);
+        }
     }
 
-    // Add a click function on each cell. Push the last selected cell into an array. 
-    // Call disableMobile on selected screens.
+    // Add a click function on each cell. Push the last selected cell into an array.
     $("td").click(selectedCell);
     let lastPressed = [];
     function selectedCell() {
@@ -51,9 +52,7 @@ $(document).ready(function () {
         lastPressed = [];
         lastPressed.push(this);
         $(lastPressed[0]).addClass("focused");
-        if (window.innerWidth < 1000) {
-            disableMobile();
-        }
+        disableMobile();
     }
 
     // Enter the pressed number on numpad into the last selected cell.
@@ -117,7 +116,7 @@ $(document).ready(function () {
         let savedCol = sameColumn;
         let savedRow = sameRow;
 
-        // Executes if inputed cell is wrong in the loop
+        // Executes if inputed cell is wrong in the loop below.
         function itsWrong(p1, i) {
             p1(i).attr("contenteditable", "false");
             p1(i).addClass("wrong");
@@ -127,11 +126,12 @@ $(document).ready(function () {
                 savedLP.removeClass("wrong");
                 savedLP.text("");
                 savedLP.attr("contenteditable", "true");
+                disableMobile();
                 lastPressed[0].focus();
             }, 600);
         }
 
-        // If selected cell input matches any of the ones in the same column or row, call itsWrong().
+        // If selected cell input is wrong, signal why and delete it.
         // Otherwise mark it as correct.
         for (i = 0; i < 8; i++) {
             function targetCol(i) {
@@ -152,6 +152,7 @@ $(document).ready(function () {
                     savedLP.removeClass("wrong");
                     savedLP.text("");
                     savedLP.attr("contenteditable", "true");
+                    disableMobile();
                     lastPressed[0].focus();
                 }, 600);
             } else if (i === 7) {
