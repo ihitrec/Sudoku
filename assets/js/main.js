@@ -112,11 +112,11 @@ $(document).ready(function () {
 
         // Executes if inputed cell is wrong in the loop below.
         function itsWrong(p1, i) {
-            p1(i).attr("contenteditable", "false");
-            p1(i).addClass("wrong");
+            $(p1[i]).attr("contenteditable", "false");
+            $(p1[i]).addClass("wrong");
             $(whichCell).addClass("wrong");
             setTimeout(function () {
-                p1(i).removeClass("wrong");
+                $(p1[i]).removeClass("wrong");
                 $(whichCell).removeClass("wrong");
                 $(whichCell).text("");
                 $(whichCell).attr("contenteditable", "true");
@@ -142,7 +142,6 @@ $(document).ready(function () {
                     $(whichCell).text("");
                     $(whichCell).attr("contenteditable", "true");
                     disableMobile();
-                    whichCell.focus();
                 }, 600);
             } else if (i === 7) {
                 setTimeout(function () {
