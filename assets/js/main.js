@@ -110,23 +110,16 @@ $(document).ready(function () {
             }
         }
 
-        // Variables local to function.
-        let savedLP = $(whichCell);
-        let savedLP2 = whichCell;
-        let actualValue = grid1Solved[cellArray.indexOf(savedLP2)].toString();
-        let savedCol = sameColumn;
-        let savedRow = sameRow;
-
         // Executes if inputed cell is wrong in the loop below.
         function itsWrong(p1, i) {
             p1(i).attr("contenteditable", "false");
             p1(i).addClass("wrong");
-            savedLP.addClass("wrong");
+            $(whichCell).addClass("wrong");
             setTimeout(function () {
                 p1(i).removeClass("wrong");
-                savedLP.removeClass("wrong");
-                savedLP.text("");
-                savedLP.attr("contenteditable", "true");
+                $(whichCell).removeClass("wrong");
+                $(whichCell).text("");
+                $(whichCell).attr("contenteditable", "true");
                 disableMobile();
                 whichCell.focus();
             }, 600);
@@ -134,35 +127,30 @@ $(document).ready(function () {
 
         // If selected cell input is wrong, signal why and delete it.
         // Otherwise mark it as correct.
+        let actualValue = grid1Solved[cellArray.indexOf(whichCell)].toString();
         for (i = 0; i < 8; i++) {
-            function targetCol(i) {
-                return $(savedCol[i]);
-            }
-            function targetRow(i) {
-                return $(savedRow[i]);
-            }
-            if (targetCol(i).text() === whichNum) {
-                itsWrong(targetCol, i);
+            if ($(sameColumn[i]).text() === whichNum) {
+                itsWrong(sameColumn, i);
                 break;
-            } else if (targetRow(i).text() === whichNum) {
-                itsWrong(targetRow, i);
+            } else if ($(sameRow[i]).text() === whichNum) {
+                itsWrong(sameRow, i);
                 break;
             } else if (whichNum !== actualValue) {
-                savedLP.addClass("wrong");
+                $(whichCell).addClass("wrong");
                 setTimeout(function () {
-                    savedLP.removeClass("wrong");
-                    savedLP.text("");
-                    savedLP.attr("contenteditable", "true");
+                    $(whichCell).removeClass("wrong");
+                    $(whichCell).text("");
+                    $(whichCell).attr("contenteditable", "true");
                     disableMobile();
                     whichCell.focus();
                 }, 600);
             } else if (i === 7) {
                 setTimeout(function () {
-                    savedLP.attr("contenteditable", "false");
+                    $(whichCell).attr("contenteditable", "false");
                 }, 10)
-                savedLP.addClass("correct");
+                $(whichCell).addClass("correct");
                 setTimeout(function () {
-                    savedLP.removeClass("correct");
+                    $(whichCell).removeClass("correct");
                 }, 600);
             }
         }
