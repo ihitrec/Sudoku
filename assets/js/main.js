@@ -25,7 +25,7 @@ $(document).ready(function () {
     function isNum() {
         let whichCell = this;
         if (/[1-9]/.test(event.key) === true) {
-            enteredValueCheck();
+            enteredValueCheck(whichCell, event.key);
         } else {
             $(whichCell).attr("contenteditable", "false");
             $(whichCell).attr("contenteditable", "true");
@@ -62,7 +62,7 @@ $(document).ready(function () {
         if ($(lastPressed[0]).attr("contenteditable") === "true") {
             lastPressed[0].innerText = this.innerText;
             lastSelectedNum = this.innerText;
-            enteredValueCheck();
+            enteredValueCheck(lastPressed[0], lastSelectedNum);
         }
     }
 
@@ -83,11 +83,11 @@ $(document).ready(function () {
     }
 
     // Check entered value.
-    function enteredValueCheck() {
+    function enteredValueCheck(whichCell, whichNum) {
 
         // Get cells in the same column.
         let sameColumn = [];
-        let reduceToSameColumn = cellArray.indexOf(lastPressed[0]);
+        let reduceToSameColumn = cellArray.indexOf(whichCell);
         if (reduceToSameColumn > 8) {
             let fitsHowMany = Math.floor(reduceToSameColumn / 9);
             reduceToSameColumn = reduceToSameColumn - (9 * fitsHowMany);
@@ -96,12 +96,12 @@ $(document).ready(function () {
             sameColumn.push(cellArray[j]);
         }
         reduceToSameRow = cellArray.indexOf(sameColumn[0]);// Belongs to same row part
-        let removeACell = sameColumn.indexOf(lastPressed[0]);
+        let removeACell = sameColumn.indexOf(whichCell);
         sameColumn.splice(removeACell, 1);
 
         // Get cells in the same row.
         let sameRow = [];
-        let firstRowIndex = cellArray.indexOf(lastPressed[0]) - reduceToSameRow;
+        let firstRowIndex = cellArray.indexOf(whichCell) - reduceToSameRow;
         for (nineTimes = 0; nineTimes < 9; nineTimes++) {
             if (nineTimes === reduceToSameRow) {
                 continue;
@@ -111,8 +111,8 @@ $(document).ready(function () {
         }
 
         // Variables local to function.
-        let savedLP = $(lastPressed[0]);
-        let savedLP2 = lastPressed[0];
+        let savedLP = $(whichCell);
+        let savedLP2 = whichCell;
         let actualValue = grid1Solved[cellArray.indexOf(savedLP2)].toString();
         let savedCol = sameColumn;
         let savedRow = sameRow;
@@ -128,7 +128,7 @@ $(document).ready(function () {
                 savedLP.text("");
                 savedLP.attr("contenteditable", "true");
                 disableMobile();
-                lastPressed[0].focus();
+                whichCell.focus();
             }, 600);
         }
 
@@ -141,23 +141,25 @@ $(document).ready(function () {
             function targetRow(i) {
                 return $(savedRow[i]);
             }
-            if (targetCol(i).text() === savedLP.text()) {
+            if (targetCol(i).text() === whichNum) {
                 itsWrong(targetCol, i);
                 break;
-            } else if (targetRow(i).text() === savedLP.text()) {
+            } else if (targetRow(i).text() === whichNum) {
                 itsWrong(targetRow, i);
                 break;
-            } else if (savedLP.text() !== actualValue) {
+            } else if (whichNum !== actualValue) {
                 savedLP.addClass("wrong");
                 setTimeout(function () {
                     savedLP.removeClass("wrong");
                     savedLP.text("");
                     savedLP.attr("contenteditable", "true");
                     disableMobile();
-                    lastPressed[0].focus();
+                    whichCell.focus();
                 }, 600);
             } else if (i === 7) {
-                savedLP.attr("contenteditable", "false");
+                setTimeout(function () {
+                    savedLP.attr("contenteditable", "false");
+                }, 10)
                 savedLP.addClass("correct");
                 setTimeout(function () {
                     savedLP.removeClass("correct");
