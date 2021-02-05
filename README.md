@@ -49,6 +49,30 @@ The website is a simple, single-page game and no advanced structure is necessary
 #### Surface
 Since the game of Sudoku is analytical, a more serious, non-script font type will be used. 
 
+## Technologies used
+
+##### Languages and frameworks
+
+![HTML5 icon](assets/images/README_images/html-icon.png) HTML5  
+
+![CSS3 icon](assets/images/README_images/css-icon.png) CSS3  
+
+![JavaScript icon](assets/images/README_images/javascript-icon.png) JavaScript  
+
+![jQuery icon](assets/images/README_images/jquery-icon.png) jQuery
+
+##### Repository, coding enviroment and version control
+
+- [Github](https://www.gitpod.io/) - hosting platform for managing repositories and more
+- [Gitpod](https://www.gitpod.io/) - coding enviroment
+- [Git](https://git-scm.com/) - used for version control
+
+#####  Resources
+
+- [Google Fonts](https://fonts.google.com/) - source of all fonts on the website
+- [Adobe XD](https://www.adobe.com/ie/products/xd.html) - used for frameworks
+<!-- - [Am I responsive](http://ami.responsivedesign.is/) - website look comparison above the project title -->
+
 ## Testing 
 
 ### Browser Compatibility
