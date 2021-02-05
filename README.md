@@ -63,12 +63,14 @@ Since the screen is smaller on mobile, there is a numpad on the website. Having 
 
 ### Encountered issues
 
-I assumed that the number that the user entered was correct if it does not match any in the same column, row or square. It turned out to be more complicated than that since the grid has a unique solution. The row, column and square checks can still be used to indicate what the user did wrong. Therfore, it did not cause a setback but it made me rethink the validation proccess. The entered number is now checked by what it should be in the solution.
+- I assumed that the number that the user entered was correct if it does not match any in the same column, row or square. It turned out to be more complicated than that since the grid has a unique solution. The row, column and square checks can still be used to indicate what the user did wrong. Therfore, it did not cause a setback but it made me rethink the validation proccess. The entered number is now checked by what it should be in the solution.
 
 ### Bugs
 
 - A disableMobile() function used to disable mobile keyboards was making the keyboard occasionally pop up and disappear. A timeout function was added to enable the input again after 100 milliseconds which fixed the issue.
 - When focus was put on another cell while the enteredValueCheck() function was running, the values inside the second for loop were changed as well. Local variables were added to store values for each function execution.
+- Entering wrong values made them appear in the grid before dissapearing. Changing the input function to onkeydown fixed the issue.
+- Entering values rapidly while clicking on random cells validates even the wrong inputs. A fix has not been found yet, but it will probably be fixed when onkeyup function is changed to onkeydown and the related code is updated.
 
 > Only the bugs that required a longer time to discover and fix were put here. There were minor bugs along the way, but were not included in this section since it would be too long. For more information check out commits with "small bug fixes" in the title which have a comment for each bug fix.
 
