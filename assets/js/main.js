@@ -19,18 +19,19 @@ $(document).ready(function () {
     // Enable input on all table cells
     $("td").attr("contenteditable", "true");
 
-    // Add a key up function on each cell, if entered key is a number, keep it. Otherwise delete it.
-    // Check if entered value is correct.
-    $("td").keyup(isNum);
+    // Add a key down function on each cell. If entered key is a number, input and check it. 
+    // Otherwise do not input it.
+    $("td").keydown(isNum);
     function isNum() {
         let whichCell = this;
-        if (Number.isNaN(parseInt(event.key)) == false && event.key !== "0") {
-            let numKey = event.key;
-            whichCell.innerText = numKey;
-            lastSelectedNum = event.key;
+        if (/[1-9]/.test(event.key) === true) {
             enteredValueCheck();
-        } else if (Number.isNaN(parseInt(event.key)) == true || event.key === "0") {
-            whichCell.innerText = "";
+        } else {
+            $(whichCell).attr("contenteditable", "false");
+            $(whichCell).attr("contenteditable", "true");
+            setTimeout(function () {
+                $(whichCell).focus();
+            }, 10)
         }
     }
 
