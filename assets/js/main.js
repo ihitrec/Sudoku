@@ -57,6 +57,7 @@ $(document).ready(function () {
     function isNum() {
         let whichCell = this;
         if (/[1-9]/.test(event.key) === true) {
+            $(this).text(event.key)
             enteredValueCheck(whichCell, event.key);
         } else {
             $(whichCell).attr("contenteditable", "false");
@@ -116,7 +117,7 @@ $(document).ready(function () {
 
     // Check entered value.
     function enteredValueCheck(whichCell, whichNum) {
-
+        $(whichCell).attr("contenteditable", "false");
         // Get cells in the same column.
         let sameCol = [];
         let sameColText = [];
@@ -155,8 +156,8 @@ $(document).ready(function () {
             setTimeout(function () {
                 $(p1[i]).removeClass("wrong");
                 $(whichCell).removeClass("wrong");
-                $(whichCell).text("");
                 $(whichCell).attr("contenteditable", "true");
+                $(whichCell).text("");
                 disableMobile();
                 whichCell.focus();
             }, 600);
@@ -186,14 +187,12 @@ $(document).ready(function () {
                 $(whichCell).addClass("wrong");
                 setTimeout(function () {
                     $(whichCell).removeClass("wrong");
-                    $(whichCell).text("");
                     $(whichCell).attr("contenteditable", "true");
+                    $(whichCell).text("");
                     disableMobile();
+                    whichCell.focus();
                 }, 600);
             } else if (i === 7) {
-                setTimeout(function () {
-                    $(whichCell).attr("contenteditable", "false");
-                }, 10)
                 if (sameRowText.includes("") === false) {
                     for (k = 0; k < 8; k++) {
                         time(k, sameRow);
