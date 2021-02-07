@@ -118,20 +118,21 @@ $(document).ready(function () {
     function enteredValueCheck(whichCell, whichNum) {
 
         // Get cells in the same column.
-        let sameColumn = [];
-        let sameColumnText = [];
-        let reduceToSameColumn = cellArray.indexOf(whichCell);
-        if (reduceToSameColumn > 8) {
-            let fitsHowMany = Math.floor(reduceToSameColumn / 9);
-            reduceToSameColumn = reduceToSameColumn - (9 * fitsHowMany);
+        let sameCol = [];
+        let sameColText = [];
+        let reduceToSameCol = cellArray.indexOf(whichCell);
+        if (reduceToSameCol > 8) {
+            let fitsHowMany = Math.floor(reduceToSameCol / 9);
+            reduceToSameCol = reduceToSameCol - (9 * fitsHowMany);
         }
-        for (j = reduceToSameColumn; j < 81; j += 9) {
-            sameColumn.push(cellArray[j]);
-            sameColumnText.push(cellArray[j].innerText);
+        for (j = reduceToSameCol; j < 81; j += 9) {
+            sameCol.push(cellArray[j]);
+            sameColText.push(cellArray[j].innerText);
         }
-        reduceToSameRow = cellArray.indexOf(sameColumn[0]);// Belongs to same row part
-        let removeACell = sameColumn.indexOf(whichCell);
-        sameColumn.splice(removeACell, 1);
+        reduceToSameRow = cellArray.indexOf(sameCol[0]);// Belongs to same row part
+        let removeACell = sameCol.indexOf(whichCell);
+        sameCol.splice(removeACell, 1);
+        sameColText.splice(removeACell, 1);
 
         // Get cells in the same row.
         let sameRow = [];
@@ -161,7 +162,7 @@ $(document).ready(function () {
             }, 600);
         }
 
-        // If a row, column or square is filled, lights up all included cells with delay
+        // If a row, column or square is filled, lights up all included cells with delay.
         function time(loopNum, which) {
             setTimeout(function () {
                 $(which[loopNum]).addClass("light-up");
@@ -175,8 +176,8 @@ $(document).ready(function () {
         // Otherwise mark it as correct.
         let actualValue = intermediate2Solved[cellArray.indexOf(whichCell)].toString();
         for (i = 0; i < 8; i++) {
-            if ($(sameColumn[i]).text() === whichNum) {
-                itsWrong(sameColumn, i);
+            if ($(sameCol[i]).text() === whichNum) {
+                itsWrong(sameCol, i);
                 break;
             } else if ($(sameRow[i]).text() === whichNum) {
                 itsWrong(sameRow, i);
@@ -194,8 +195,13 @@ $(document).ready(function () {
                     $(whichCell).attr("contenteditable", "false");
                 }, 10)
                 if (sameRowText.includes("") === false) {
-                    for (i = 0; i < 8; i++) {
-                        time(i, sameRow);
+                    for (k = 0; k < 8; k++) {
+                        time(k, sameRow);
+                    }
+                }
+                if (sameColText.includes("") === false) {
+                    for (h = 0; h < 8; h++) {
+                        time(h, sameCol);
                     }
                 }
                 $(whichCell).addClass("correct");
