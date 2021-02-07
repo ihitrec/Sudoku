@@ -119,6 +119,7 @@ $(document).ready(function () {
 
         // Get cells in the same column.
         let sameColumn = [];
+        let sameColumnText = [];
         let reduceToSameColumn = cellArray.indexOf(whichCell);
         if (reduceToSameColumn > 8) {
             let fitsHowMany = Math.floor(reduceToSameColumn / 9);
@@ -126,6 +127,7 @@ $(document).ready(function () {
         }
         for (j = reduceToSameColumn; j < 81; j += 9) {
             sameColumn.push(cellArray[j]);
+            sameColumnText.push(cellArray[j].innerText);
         }
         reduceToSameRow = cellArray.indexOf(sameColumn[0]);// Belongs to same row part
         let removeACell = sameColumn.indexOf(whichCell);
@@ -133,12 +135,14 @@ $(document).ready(function () {
 
         // Get cells in the same row.
         let sameRow = [];
+        let sameRowText = [];
         let firstRowIndex = cellArray.indexOf(whichCell) - reduceToSameRow;
         for (nineTimes = 0; nineTimes < 9; nineTimes++) {
             if (nineTimes === reduceToSameRow) {
                 continue;
             } else {
                 sameRow.push(cellArray[firstRowIndex + nineTimes]);
+                sameRowText.push(cellArray[firstRowIndex + nineTimes].innerText);
             }
         }
 
@@ -155,6 +159,16 @@ $(document).ready(function () {
                 disableMobile();
                 whichCell.focus();
             }, 600);
+        }
+
+        // If a row, column or square is filled, lights up all included cells with delay
+        function time(loopNum, which) {
+            setTimeout(function () {
+                $(which[loopNum]).addClass("light-up");
+            }, 50 * (loopNum + 1));
+            setTimeout(function () {
+                $(which[loopNum]).removeClass("light-up");
+            }, 1050 * (loopNum + 1));
         }
 
         // If selected cell input is wrong, signal why and delete it.
@@ -179,11 +193,17 @@ $(document).ready(function () {
                 setTimeout(function () {
                     $(whichCell).attr("contenteditable", "false");
                 }, 10)
+                if (sameRowText.includes("") === false) {
+                    for (i = 0; i < 8; i++) {
+                        time(i, sameRow);
+                    }
+                }
                 $(whichCell).addClass("correct");
                 setTimeout(function () {
                     $(whichCell).removeClass("correct");
-                }, 600);
+                }, 400);
             }
         }
     };
+    newGame();
 });
