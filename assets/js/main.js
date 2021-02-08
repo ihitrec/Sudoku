@@ -63,6 +63,9 @@ $(document).ready(function () {
             $(this).text(event.key)
             enteredValueCheck(whichCell, event.key);
         } else {
+            setTimeout(function () {
+                $(whichCell).text("");
+            }, 10);
             $(whichCell).attr("contenteditable", "false");
             $(whichCell).attr("contenteditable", "true");
             setTimeout(function () {
