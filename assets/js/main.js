@@ -70,19 +70,17 @@ $(document).ready(function () {
 
     // Add a click function on each cell. Push the last selected cell into an array.
     $("td").click(selectedCell);
-    let lastPressed = [];
+    let lastPressed;
     function selectedCell() {
-        $(lastPressed[0]).removeClass("focused");
-        lastPressed = [];
-        lastPressed.push(this);
-        $(lastPressed[0]).addClass("focused");
-        disableMobile();
+        $(this).focus();
+        disableMobile(this);
+        lastPressed = this;
     }
 
     //  Disable mobile keyboard from popping up on selected screens.
-    function disableMobile() {
-        if (window.innerWidth < 1000 && $(lastPressed).text() === "") {
-            $(lastPressed).attr("contenteditable", "false");
+    function disableMobile(which) {
+        if (window.innerWidth < 1000 && $(which).text() === "") {
+            $(which).attr("contenteditable", "false");
             setTimeout(function () {
                 $(lastPressed).attr("contenteditable", "true");
             }, 100);
@@ -92,10 +90,10 @@ $(document).ready(function () {
     // Enter the pressed number on numpad into the last selected cell.
     $(".num").click(numPad);
     function numPad() {
-        if ($(lastPressed[0]).attr("contenteditable") === "true") {
-            lastPressed[0].innerText = this.innerText;
+        if ($(lastPressed).attr("contenteditable") === "true") {
+            lastPressed.innerText = this.innerText;
             lastSelectedNum = this.innerText;
-            enteredValueCheck(lastPressed[0], lastSelectedNum);
+            enteredValueCheck(lastPressed, lastSelectedNum);
         }
     }
 
@@ -118,6 +116,7 @@ $(document).ready(function () {
     // Check entered value.
     function enteredValueCheck(whichCell, whichNum) {
         $(whichCell).attr("contenteditable", "false");
+        let whatsFocused = document.activeElement;
         // Get cells in the same column.
         let sameCol = [];
         let sameColText = [];
@@ -159,7 +158,9 @@ $(document).ready(function () {
                 $(whichCell).attr("contenteditable", "true");
                 $(whichCell).text("");
                 disableMobile();
-                whichCell.focus();
+                if (document.activeElement === whatsFocused) {
+                    whichCell.focus();
+                }
             }, 600);
         }
 
@@ -190,7 +191,9 @@ $(document).ready(function () {
                     $(whichCell).attr("contenteditable", "true");
                     $(whichCell).text("");
                     disableMobile();
-                    whichCell.focus();
+                    if (document.activeElement === whatsFocused) {
+                        whichCell.focus();
+                    }
                 }, 600);
             } else if (i === 7) {
                 if (sameRowText.includes("") === false) {
@@ -212,3 +215,6 @@ $(document).ready(function () {
     };
     newGame();
 });
+
+
+
