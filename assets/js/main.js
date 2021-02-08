@@ -70,7 +70,7 @@ $(document).ready(function () {
             $(whichCell).attr("contenteditable", "true");
             setTimeout(function () {
                 $(whichCell).focus();
-            }, 10)
+            }, 10);
         }
     }
 
@@ -78,15 +78,18 @@ $(document).ready(function () {
     $("td").click(selectedCell);
     let lastPressed;
     function selectedCell() {
+        $(lastPressed).removeClass("focused");
         $(this).focus();
-        disableMobile(this);
         lastPressed = this;
+        disableMobile();
+
     }
 
     //  Disable mobile keyboard from popping up on selected screens.
-    function disableMobile(which) {
-        if (window.innerWidth < 1000 && $(which).text() === "") {
-            $(which).attr("contenteditable", "false");
+    function disableMobile() {
+        if (window.innerWidth < 1000 && $(lastPressed).text() === "") {
+            $(lastPressed).attr("contenteditable", "false");
+            $(lastPressed).addClass("focused");
             setTimeout(function () {
                 $(lastPressed).attr("contenteditable", "true");
             }, 100);
@@ -163,10 +166,11 @@ $(document).ready(function () {
                 $(whichCell).removeClass("wrong");
                 $(whichCell).attr("contenteditable", "true");
                 $(whichCell).text("");
-                disableMobile();
-                if (document.activeElement === whatsFocused) {
+                if (document.activeElement === whatsFocused && window.innerWidth > 1000) {
                     whichCell.focus();
                 }
+                disableMobile();
+
             }, 600);
         }
 
@@ -196,10 +200,10 @@ $(document).ready(function () {
                     $(whichCell).removeClass("wrong");
                     $(whichCell).attr("contenteditable", "true");
                     $(whichCell).text("");
-                    disableMobile();
-                    if (document.activeElement === whatsFocused) {
+                    if (document.activeElement === whatsFocused && window.innerWidth > 1000) {
                         whichCell.focus();
                     }
+                    disableMobile();
                 }, 600);
             } else if (i === 7) {
                 if (sameRowText.includes("") === false) {
