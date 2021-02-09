@@ -66,15 +66,48 @@ td:focus{
 /* Animations */
 
 .light-up {
-  animation: light-up 1s;
+  animation: light-up .6s;
 }
 @keyframes light-up {
   0% {
     background-color: forestgreen   ;
     opacity: .75;
   }
+  50%{
+    transform: scale(1.15);
+  }
   100% {
     background-color: aliceblue;
     opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.intro{
+    animation: intro .70s;
+    animation-timing-function: linear;
+}
+@keyframes intro {
+  0% {
+    opacity: .1;
+    transform: scale(0.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.intro-letter{
+    animation: intro-letter .1s;
+    animation-timing-function: ease-in;
+}
+@keyframes intro-letter {
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(2);
   }
 }

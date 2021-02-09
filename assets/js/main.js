@@ -106,6 +106,24 @@ $(document).ready(function () {
         }
     }
 
+    // When opening the website start a new game with animations.
+    function firstNewGame() {
+        setTimeout(function () {
+            for (i = 0; i < cellArray.length; i++) {
+                if (typeof intermediate2[i] === "number") {
+                    showLetters(i);
+                }
+            }
+        }, 400);
+    }
+    function showLetters(i) {
+        setTimeout(function () {
+            $(cellArray[i]).addClass("intro");
+            cellArray[i].innerText = intermediate2[i];
+            $(cellArray[i]).attr("contenteditable", "false");
+        }, 15 * i)
+    }
+
     // Start a new game which fills the grid with the pre-made template.
     $("button").click(newGame);
     function newGame() {
@@ -249,5 +267,5 @@ $(document).ready(function () {
             }
         }
     };
-    newGame();
+    firstNewGame();
 });
