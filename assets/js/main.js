@@ -130,7 +130,7 @@ $(document).ready(function () {
     }
 
     // Start a new game which fills the grid with the pre-made template.
-    $("button").click(newGame);
+    $("#new-game").click(newGame);
     function newGame() {
         $("td").text("");
         $("td").attr("contenteditable", "true");
@@ -142,6 +142,20 @@ $(document).ready(function () {
                 cellArray[i].innerText = intermediate2[i];
                 $(cellArray[i]).attr("contenteditable", "false");
             }
+        }
+    }
+
+    // Fill out a random cell
+    $("#hint").click(hint);
+    function hint() {
+        let pickACell = Math.floor(Math.random() * 81);
+        let pickedCell = cellArray[pickACell];
+        console.log(intermediate2Solved[pickACell].toString());
+        if ($(pickedCell).text() === "") {
+            $(pickedCell).text(intermediate2Solved[pickACell]);
+            enteredValueCheck(pickedCell, intermediate2Solved[pickACell].toString());
+        } else {
+            hint();
         }
     }
 
@@ -211,7 +225,6 @@ $(document).ready(function () {
                     whichCell.focus();
                 }
                 disableMobile();
-
             }, 600);
         }
 
