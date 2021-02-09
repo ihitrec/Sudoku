@@ -108,20 +108,25 @@ $(document).ready(function () {
 
     // When opening the website start a new game with animations.
     function firstNewGame() {
+        let nextLetter = 0;
         setTimeout(function () {
             for (i = 0; i < cellArray.length; i++) {
                 if (typeof intermediate2[i] === "number") {
-                    showLetters(i);
+                    nextLetter += 1;
+                    showLetters(i, nextLetter);
                 }
             }
         }, 400);
-    }
-    function showLetters(i) {
         setTimeout(function () {
-            $(cellArray[i]).addClass("intro");
+            $("td").removeClass("intro-letter");
+        }, 2500);
+    }
+    function showLetters(i, nextLetter) {
+        setTimeout(function () {
+            $(cellArray[i]).addClass("intro-letter");
             cellArray[i].innerText = intermediate2[i];
             $(cellArray[i]).attr("contenteditable", "false");
-        }, 15 * i)
+        }, 50 * nextLetter);
     }
 
     // Start a new game which fills the grid with the pre-made template.
