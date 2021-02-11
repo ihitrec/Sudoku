@@ -91,7 +91,8 @@ There were no major differences in how the code is rendered on different browser
  
 ### Responsiveness
 
-Since the screen is smaller on mobile, there is a numpad on the website. Having a mobile keyboard pop up every time a field is selected would not be an enjoyable experience. Therefore, the keyboard is disabled on screens with the width smaller than 1000.  
+- Since the screen is smaller on mobile, there is a numpad on the website. Having a mobile keyboard pop up every time a field is selected would not be an enjoyable experience. Therefore, the keyboard is disabled on screens with the width smaller than 1000.  
+- For mobile screens, the grid is generated at 96% width. I needed a way to always keep the height same as the width which was done using JavaScript. The height is matched by width and table cell size is divided by the available space. Values are altered by new width if the screen is resized.
 
 ### Encountered issues and challenges
 
