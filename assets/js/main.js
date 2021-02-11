@@ -147,13 +147,16 @@ $(document).ready(function () {
     // Fill out a random cell
     $("#hint").click(hint);
     function hint() {
+        let isGridFilled = [];
+        for (i = 0; i < cellArray.length; i++) {
+            isGridFilled.push(cellArray[i].innerText);
+        }
         let pickACell = Math.floor(Math.random() * 81);
         let pickedCell = cellArray[pickACell];
-        console.log(intermediate2Solved[pickACell].toString());
         if ($(pickedCell).text() === "") {
             $(pickedCell).text(intermediate2Solved[pickACell]);
             enteredValueCheck(pickedCell, intermediate2Solved[pickACell].toString());
-        } else {
+        } else if (isGridFilled.includes("") === true) {
             hint();
         }
     }
@@ -231,10 +234,10 @@ $(document).ready(function () {
         function time(loopNum, which) {
             setTimeout(function () {
                 $(which[loopNum]).addClass("light-up");
+                setTimeout(function () {
+                    $(which[loopNum]).removeClass("light-up");
+                }, 600);
             }, 50 * (loopNum + 1));
-            setTimeout(function () {
-                $(which[loopNum]).removeClass("light-up");
-            }, 1050 * (loopNum + 1));
         }
 
         // If selected cell input is wrong, signal why and delete it.
