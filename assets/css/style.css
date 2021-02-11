@@ -2,6 +2,7 @@
 
 body{
     background-color: ghostwhite;
+    margin:0;
 }
 
 /* START ------------------------------------------------------------ Table style */
@@ -9,7 +10,6 @@ body{
 table{
     margin: 20px auto;
     width: 450px;
-    height: 450px;
     border-collapse: collapse;
     text-align: center;
     border: 1.5px solid gray;
@@ -62,6 +62,20 @@ td:focus{
 }
 
 /* Numpad style -------------------------------------------------------------- END */
+
+/* Media query */
+
+@media only screen and (max-width: 470px){
+    table{
+        width: 96%;
+    }
+    td{
+        font-size: 22px;
+    }
+    #numpad{
+        font-size: 9vw;
+    }
+}
 
 /* Animations */
 

@@ -26,6 +26,17 @@ let expert3Solved = [5, 2, 1, 7, 6, 4, 8, 9, 3, 3, 4, 8, 9, 1, 5, 2, 6, 7, 9, 7,
 
 $(document).ready(function () {
 
+    // Keep table responsive.
+    $("table").height($("table").width());
+    $("td").height($("table").width() / 9);
+    $("td").width($("table").width() / 9)
+    window.addEventListener("resize", resizeTable)
+    function resizeTable() {
+        $("table").height($("table").width());
+        $("td").height($("table").width() / 9);
+        $("td").width($("table").width() / 9)
+    }
+
     // Remove content if dropped into cell.
     document.addEventListener("drop", function (event) {
         setTimeout(function () {
