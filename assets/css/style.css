@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600&family=Yusei+Magic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 body{
     background-color: ghostwhite;
@@ -6,21 +6,23 @@ body{
     display: flex;
     justify-content: center;
     flex-wrap:wrap;
+    font-family: "Quicksand",sans-serif;
+}
+
+h1{
+    color:#103f95;
+    font-weight: 400;
+    padding-left: 7px;
 }
 
 /* START ------------------------------------------------------------ Table style */
-h1{
-    font-family: "Quicksand",sans-serif;
-    color:#103f95;
-    font-weight: 400;
-}
+
 table{
     margin: 20px auto;
     width: 450px;
     border-collapse: collapse;
     text-align: center;
     border: 1.5px solid gray;
-    font-family: "Quicksand", sans-serif;
     font-size: 27px;
     background-color: aliceblue;
 }
@@ -42,8 +44,7 @@ td:focus{
     background-color: #c9e0f5;
 }
 .focused{
-     background-color: #c9e0f5;
-
+    background-color: #c9e0f5;
 }
 .wrong{
     background-color:#e01717 !important;
@@ -56,11 +57,10 @@ td:focus{
 
 /* Table style -------------------------------------------------------------- END */
 
-/* START ------------------------------------------------------------ Numpad style */
+/* START ------------------------------------------------------------ Controls style */
 
 #numpad{
     font-size: 60px;
-    font-family: 'Quicksand';
     text-align: center;
     font-weight: 100;
 }
@@ -70,6 +70,10 @@ td:focus{
     color: #103f95;
     box-shadow: 1px 1px 5px lightgrey;
     border-radius: 20px;
+}
+.num:hover{
+    box-shadow: 2px 2px 5px lightgrey;
+    cursor: pointer;
 }
 .btn{
     color: #103f95;
@@ -85,14 +89,13 @@ td:focus{
     box-shadow: 4px 6px 5px lightgrey;
     cursor: pointer;
 }
-.num:hover{
-    box-shadow: 2px 2px 5px lightgrey;
-    cursor: pointer;
+#hint{
+    width: 3em;
 }
 
 /* Numpad style -------------------------------------------------------------- END */
 
-/* Media query */
+/* START ------------------------------------------------------------ Media query */
 
 @media only screen and (max-width: 800px){
     table{
@@ -110,18 +113,23 @@ td:focus{
         margin-bottom: 20px;
     }
     .btn{
-        font-size: 8vw;
-        margin-left: 19px;
-    }
-}
-@media only screen and (min-width: 700px){
-#numpad{
         font-size: 7vw;
+        margin-left: 1.2em;
+    }
+    .btn:hover{
+        border:none;
+    }
+}
+
+@media only screen and (min-width: 700px){
+    #numpad{
+    font-size: 7vw;
+    }
+    .btn{
+        font-size: 6vw;
     }
 
 }
-
-
 
 @media only screen and (min-width: 801px){
     table{
@@ -130,13 +138,7 @@ td:focus{
     .controls{
         width: 310px;
     }
-    .buttons{
-        margin-top: 19px;
-        margin-left: 15px;
-        display: flex;
-        justify-content: space-around;
-    }
-    #numpad{
+     #numpad{
         margin-top: 82px;
         margin-left: 15px;
         font-size: 50px;
@@ -144,15 +146,21 @@ td:focus{
     .num{
         width: 71px;
     }
-
+    .buttons{
+        margin-top: 19px;
+        margin-left: 15px;
+        display: flex;
+        justify-content: space-around;
+    }
     .btn{
         height: 62px;
         font-size: 31px;
     }
-  
 }
 
-/* Animations */
+/* Media query -------------------------------------------------------------- END */
+
+/* START ------------------------------------------------------------ Animations */
 
 .light-up {
   animation: light-up .6s;
@@ -201,3 +209,5 @@ td:focus{
     transform: scale(1);
   }
 }
+
+/* Animations -------------------------------------------------------------- END */
