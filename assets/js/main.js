@@ -37,13 +37,6 @@ $(document).ready(function () {
         $("td").width($("table").width() / 9)
     }
 
-    // Remove content if dropped into cell.
-    document.addEventListener("drop", function (event) {
-        setTimeout(function () {
-            event.target.innerHTML = "";
-        }, 10);
-    });
-
     // Transfer all cells to new array to manipulate it.
     let cellArray = [];
     let cellArrayItems = document.getElementsByTagName("td");
