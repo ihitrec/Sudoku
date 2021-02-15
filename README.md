@@ -92,7 +92,10 @@ There were no major differences in how the code is rendered on different browser
 ### Responsiveness
 
 - Since the screen is smaller on mobile, there is a numpad on the website. Having a mobile keyboard pop up every time a field is selected would not be an enjoyable experience. Therefore, the keyboard is disabled on screens with the width smaller than 1000.  
-- For mobile screens, the grid is generated at 96% width. I needed a way to always keep the height same as the width which was done using JavaScript. The height is matched by width and table cell size is divided by the available space. Values are altered by new width if the screen is resized.
+
+- For mobile screens, the grid is generated at 96% width. I needed a way to always keep the height same as the width which was done using JavaScript. The height is matched by width and table cell size is divided by the available space. Values are altered by new width if the screen is resized.  
+
+- The thing that caused the most responsiveness issues is the table border. It would look good on one screen but would not be visible on another or while zoomed out. The issue was caused by a difference in physical and logical pixels. While it cannot look exactly the same across all screens, it is adjusted depending on the current pixel ratio of the used device. For more information on pixel ratios visit: [Pixels. Physical vs. Logical](https://blog.specctr.com/pixels-physical-vs-logical-c84710199d62)
 
 ### Encountered issues and challenges
 
