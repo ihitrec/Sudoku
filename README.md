@@ -87,7 +87,7 @@ There were no major differences in how the code is rendered on different browser
 
 - Event is structured differently which prevents the use of **event.path**. Instead, **this** was used which turned out to be more simple anyway.  
 
-- Keydown event works in a different way which required setting a timeout function. It deletes the content if not in the 1-9 range. 
+- Keydown event works in a different way which required setting a timeout function. It deletes the content if not in the 1-9 number range. 
  
 ### Responsiveness
 
@@ -95,7 +95,7 @@ There were no major differences in how the code is rendered on different browser
 
 - For mobile screens, the grid is generated at 96% width. I needed a way to always keep the height same as the width which was done using JavaScript. The height is matched by width and table cell size is divided by the available space. Values are altered by new width if the screen is resized.  
 
-- The thing that caused the most responsiveness issues is the table border. It would look good on one screen but would not be visible on another or while zoomed out. The issue was caused by a difference in physical and logical pixels. While it cannot look exactly the same across all screens, it is adjusted depending on the current pixel ratio of the used device. For more information on pixel ratios visit: [Pixels. Physical vs. Logical](https://blog.specctr.com/pixels-physical-vs-logical-c84710199d62)
+- The thing that caused the most responsiveness issues is the bigger table border. It would look good on one screen but would not be visible on another. I suspected it was because of the change in pixel ratios, but that is probably just part of the issue. Another factor was the zoom level and the difference in how browsers calculate border-width size. I have changed the border to double which solves the big problem of the dividing borders not being visible. The borders change width to a bit smaller than the desired 1.5px but they are still visible enough.
 
 ### Encountered issues and challenges
 
