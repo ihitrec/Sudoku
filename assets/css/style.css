@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 body{
+    cursor: pointer;
     background-color: ghostwhite;
     margin:0;
     display: flex;
@@ -80,7 +81,6 @@ td:focus{
 }
 .num:hover{
     box-shadow: 2px 2px 5px lightgrey;
-    cursor: pointer;
 }
 .btn{
     color: #103f95;
@@ -94,7 +94,6 @@ td:focus{
 .btn:hover{
     border:1.5px solid;
     box-shadow: 4px 6px 5px lightgrey;
-    cursor: pointer;
 }
 #hint{
     width: 3em;
@@ -105,12 +104,13 @@ td:focus{
 /* START ------------------------------------------------------------ Media query */
 
 
+
 @media only screen and (max-width: 800px){
     table{
         width: 96%;
     }
     td{
-        font-size: 22px;
+        font-size: 30px;
     }
     #numpad{
         font-size: 8vw;
@@ -126,6 +126,11 @@ td:focus{
     }
     .btn:hover{
         border:none;
+    }
+}
+@media only screen and (max-width: 470px){
+    td{
+        font-size: 22px;
     }
 }
 
@@ -166,6 +171,13 @@ td:focus{
     }
 }
 
+@media only screen and (min-width: 1630px){
+    body{
+        transform: scale(1.5);
+        width: 50%;
+        margin: 144px auto;
+    }
+}
 /* Media query -------------------------------------------------------------- END */
 
 /* START ------------------------------------------------------------ Animations */
