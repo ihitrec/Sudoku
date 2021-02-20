@@ -37,6 +37,14 @@ $(document).ready(function () {
         $("td").width($("table").width() / 9)
     }
 
+    $("html").one("mouseover", pointer);
+    function pointer() {
+        $("table").addClass("pointer");
+        $(".num").addClass("pointer");
+        $(".btn").addClass("pointer");
+        console.log(1);
+    }
+
     // Transfer all cells to new array to manipulate it.
     let cellArray = [];
     let cellArrayItems = document.getElementsByTagName("td");
