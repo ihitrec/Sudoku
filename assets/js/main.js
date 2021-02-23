@@ -42,7 +42,6 @@ $(document).ready(function () {
         $("table").addClass("pointer");
         $(".num").addClass("pointer");
         $(".btn").addClass("pointer");
-        console.log(1);
     }
 
     // Transfer all cells to new array to manipulate it.
