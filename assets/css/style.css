@@ -2,6 +2,7 @@
 
 body{
     background-color: ghostwhite;
+    color:#103f95;
     margin:0;
     display: flex;
     justify-content: center;
@@ -21,7 +22,6 @@ body{
 }
 
 h1{
-    color:#103f95;
     font-weight: 400;
     padding-left: 7px;
 }
@@ -70,6 +70,30 @@ td:focus{
 
 /* START ------------------------------------------------------------ Controls style */
 
+.difficulty{
+    margin-top: 86px;
+    margin-left: 15px;
+    text-align: center;
+}
+.difficulty span{
+    font-weight: 600;
+}
+.difficulty h1{
+    font-size: 19px;
+    color: gray;
+    margin-right: 187px;
+}
+.margin{
+    margin-right: 148px;
+}
+.slider{
+    appearance: none;
+    border-radius: 5px;
+    height: 6px;
+    background-color: #0175fda8;
+    outline: none;
+    width: 85%;
+}
 #numpad{
     font-size: 60px;
     text-align: center;
@@ -78,7 +102,6 @@ td:focus{
 .num{
     margin:5px;
     display: inline-block;
-    color: #103f95;
     box-shadow: 1px 1px 5px lightgrey;
     border-radius: 20px;
 }
@@ -86,7 +109,6 @@ td:focus{
     box-shadow: 2px 2px 5px lightgrey;
 }
 .btn{
-    color: #103f95;
     background-color: ghostwhite;
     border: none;
     outline: none;
@@ -107,7 +129,7 @@ td:focus{
 /* START ------------------------------------------------------------ Media query */
 
 @media (pointer:fine){
-    table, .num, .btn{
+    table, .num, .btn, input{
         cursor: pointer;
     }
 }
@@ -158,7 +180,7 @@ td:focus{
         width: 310px;
     }
      #numpad{
-        margin-top: 82px;
+        margin-top: 60px;
         margin-left: 15px;
         font-size: 50px;
     }
@@ -174,6 +196,8 @@ td:focus{
     .btn{
         height: 62px;
         font-size: 31px;
+            color:#103f95;
+
     }
 }
 
