@@ -95,7 +95,6 @@ There were no major differences in how the code is rendered on different browser
 
 - For mobile screens, the grid is generated at 96% width. I needed a way to always keep the height same as the width which was done using JavaScript. The height is matched by width and table cell size is divided by the available space. Values are altered by new width if the screen is resized.  
 
-- The thing that caused the most responsiveness issues is the bigger table border. It would look good on one screen but would not be visible on another. I suspected it was because of the change in pixel ratios, but that is probably just part of the issue. Another factor was the zoom level and the difference in how browsers calculate border-width size. I have changed the border to double which solves the big problem of the dividing borders not being visible. The borders change width to a bit smaller than the desired 1.5px but they are still visible enough.
 
 ### Encountered issues and challenges
 
@@ -111,6 +110,11 @@ There were no major differences in how the code is rendered on different browser
 
 - Entering wrong values made them appear in the grid before dissapearing. Changing the input function to keydown fixed the issue.  
 
-- Entering values rapidly while clicking on random cells validates even the wrong inputs. Changing the input function to keydown fixed the issue.
+- Entering values rapidly while clicking on random cells validates even the wrong inputs. Changing the input function to keydown fixed the issue.  
+
+- The thing that caused the most responsiveness issues is the bigger table border. It would look good on one screen but would not be visible on another. I suspected it was because of the change in pixel ratios, but that is probably just part of the issue. Another factor was the zoom level and the difference in how browsers calculate border-width size. I have changed the border to double which solves the big problem of the dividing borders not being visible. The borders change width to a bit smaller than the desired 1.5px but they are still visible enough.  
+
+- Changing the cursor to pointer made the selection to be highlited for a second on mobile. I have used a media pointer feature to determine what device the website is accessed from. The feature is not fully accurate as it depends on the user agent, but it is the closest way of fixing the problem at the moment. The only disadvantage of it not being loaded properly is that the cursor is not going to change. 
+
 > Only the bugs that required a longer time to discover and fix were put here. There were minor bugs along the way, but were not included in this section since it would be too long. For more information check out commits with "small bug fixes" in the title which have a comment for each bug fix.
 
