@@ -37,13 +37,6 @@ $(document).ready(function () {
         $("td").width($("table").width() / 9)
     }
 
-    $("html").one("mouseover", pointer);
-    function pointer() {
-        $("table").addClass("pointer");
-        $(".num").addClass("pointer");
-        $(".btn").addClass("pointer");
-    }
-
     // Transfer all cells to new array to manipulate it.
     let cellArray = [];
     let cellArrayItems = document.getElementsByTagName("td");
@@ -103,6 +96,17 @@ $(document).ready(function () {
             let lastSelectedNum = this.innerText;
             enteredValueCheck(lastPressed, lastSelectedNum);
         }
+    }
+
+    // Toggle difficulty
+    $(".difficulty-headline").click(show);
+    function show() {
+        $(".fa-sort-down").toggle(650);
+        $(".fa-minus").toggle(650);
+        if ($(".fa-minus").css("display") === "block") {
+            $(".fa-minus").css("display", "inline");
+        }
+        $(".difficulty").slideToggle(650);
     }
 
     // When opening the website start a new game with animations.

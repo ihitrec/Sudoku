@@ -70,29 +70,37 @@ td:focus{
 
 /* START ------------------------------------------------------------ Controls style */
 
-.difficulty{
-    margin-top: 86px;
-    margin-left: 15px;
-    text-align: center;
-}
-.difficulty span{
-    font-weight: 600;
-}
-.difficulty h1{
+.difficulty-headline{
     font-size: 19px;
     color: gray;
-    margin-right: 187px;
+    margin-top: 86px;
 }
-.margin{
-    margin-right: 148px;
+.fas{
+    margin-left:5px;
+}
+.fa-minus{
+    display: none;
+}
+.difficulty{
+    margin-left: 15px;
+    text-align: center;
+    display: none;
 }
 .slider{
+    -webkit-appearance:none;
+    -moz-appearance: none;
     appearance: none;
     border-radius: 5px;
     height: 6px;
     background-color: #0175fda8;
     outline: none;
     width: 85%;
+}
+.difficulty span{
+    font-weight: 600;
+}
+.margin{
+    margin-right: 148px;
 }
 #numpad{
     font-size: 60px;
@@ -129,7 +137,7 @@ td:focus{
 /* START ------------------------------------------------------------ Media query */
 
 @media (pointer:fine){
-    table, .num, .btn, input{
+    table, .num, .btn, input, .difficulty-headline{
         cursor: pointer;
     }
 }
@@ -180,7 +188,7 @@ td:focus{
         width: 310px;
     }
      #numpad{
-        margin-top: 60px;
+        margin-top: 35px;
         margin-left: 15px;
         font-size: 50px;
     }
