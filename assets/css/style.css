@@ -159,9 +159,20 @@ td:focus{
     .btn{
         font-size: 7vw;
         margin-left: 1.2em;
+            color:#103f95;
+
     }
     .btn:hover{
         border:none;
+    }
+    .difficulty{
+        margin-bottom: 15px;
+    }
+    .difficulty-headline{
+        margin-top: 0;
+    }
+    .margin{
+        margin-right: 215px;
     }
 }
 @media only screen and (max-width: 470px){
