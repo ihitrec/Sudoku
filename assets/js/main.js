@@ -159,30 +159,6 @@ $(document).ready(function () {
         $(".difficulty").slideToggle(400);
     }
 
-    // When opening the website start a new game with animations.
-    function firstNewGame() {
-        rangeValue.value = "1";
-        let nextLetter = 0;
-        setTimeout(function () {
-            for (i = 0; i < cellArray.length; i++) {
-                if (typeof beginner1[i] === "number") {
-                    nextLetter += 1;
-                    showLetters(i, nextLetter);
-                }
-            }
-        }, 400);
-        setTimeout(function () {
-            $("td").removeClass("intro-letter");
-        }, 2500);
-    }
-    function showLetters(i, nextLetter) {
-        setTimeout(function () {
-            $(cellArray[i]).addClass("intro-letter");
-            cellArray[i].innerText = beginner1[i];
-            $(cellArray[i]).attr("contenteditable", "false");
-        }, 50 * nextLetter);
-    }
-
     // Start a new game which fills the grid with the pre-made template.
     let currentGrid;
     let whichSolution;
@@ -230,6 +206,32 @@ $(document).ready(function () {
                 $(cellArray[i]).attr("contenteditable", "false");
             }
         }
+    }
+
+    // When opening the website start a new game with animations.
+    function firstNewGame() {
+        currentGrid = beginner1;
+        whichSolution = beginner1Solved;
+        rangeValue.value = "1";
+        let nextLetter = 0;
+        setTimeout(function () {
+            for (i = 0; i < cellArray.length; i++) {
+                if (typeof beginner1[i] === "number") {
+                    nextLetter += 1;
+                    showLetters(i, nextLetter);
+                }
+            }
+        }, 400);
+        setTimeout(function () {
+            $("td").removeClass("intro-letter");
+        }, 2500);
+    }
+    function showLetters(i, nextLetter) {
+        setTimeout(function () {
+            $(cellArray[i]).addClass("intro-letter");
+            cellArray[i].innerText = beginner1[i];
+            $(cellArray[i]).attr("contenteditable", "false");
+        }, 50 * nextLetter);
     }
 
     // Fill out a random cell
