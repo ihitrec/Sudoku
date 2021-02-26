@@ -74,12 +74,18 @@ td:focus{
     font-size: 19px;
     color: gray;
     margin-top: 86px;
+    display: inline-block;
 }
 .fas{
     margin-left:5px;
 }
 .fa-minus{
     display: none;
+}
+#timer{
+    display: inline-block;
+    margin-left: 133px;
+
 }
 .difficulty{
     margin-left: 15px;
@@ -183,6 +189,11 @@ td:focus{
     }
     .difficulty-headline{
         margin-top: 0;
+        font-size: 20px;
+    }
+    #timer{
+        font-size: 16px;
+        float: right;
     }
     .margin{
         margin-right: 64%;

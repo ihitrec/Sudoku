@@ -99,6 +99,43 @@ $(document).ready(function () {
         }
     }
 
+    // Game timer
+    let intervalID;
+    function interval() {
+        $("#timer").text("00:00");
+        let seconds = 0;
+        let minutes = 0;
+        intervalID = setInterval(function () {
+            if (seconds < 10) {
+                if (minutes === 0) {
+                    $("#timer").text(`00:0${seconds}`)
+                } else if (minutes < 10) {
+                    $("#timer").text(`0${minutes}:0${seconds}`)
+                } else {
+                    $("#timer").text(`${minutes}:0${seconds}`)
+                }
+            } else if (seconds >= 10 && seconds < 60) {
+                if (minutes === 0) {
+                    $("#timer").text(`00:${seconds}`)
+                } else if (minutes < 10) {
+                    $("#timer").text(`0${minutes}:${seconds}`)
+                } else {
+                    $("#timer").text(`${minutes}:${seconds}`)
+                }
+            } else if (seconds === 60) {
+                minutes++;
+                seconds = 0;
+                if (minutes < 10) {
+                    $("#timer").text(`0${minutes}:00`)
+                } else {
+                    $("#timer").text(`${minutes}:00`)
+                }
+            }
+            seconds++;
+        }, 1000);
+    }
+    interval();
+
     // Change range value on description click
     let rangeValue = document.getElementsByTagName("input")[0];
     $(".difficulty span").click(function () {
@@ -157,6 +194,8 @@ $(document).ready(function () {
     let whichExpert = 0;
     $("#new-game").click(newGame);
     function newGame() {
+        clearInterval(intervalID);
+        interval();
         currentGrid = document.getElementsByTagName("input")[0].value
         $("td").text("");
         $("td").attr("contenteditable", "true");
