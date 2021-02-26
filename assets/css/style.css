@@ -151,7 +151,7 @@ td:focus{
 /* START ------------------------------------------------------------ Media query */
 
 @media (pointer:fine){
-    table, .num, .btn, input, .difficulty-headline{
+    table, .num, .btn, input, .difficulty-headline, .difficulty span {
         cursor: pointer;
     }
 }
@@ -173,8 +173,7 @@ td:focus{
     .btn{
         font-size: 7vw;
         margin-left: 1.2em;
-            color:#103f95;
-
+        color:#103f95;
     }
     .btn:hover{
         border:none;
@@ -186,7 +185,7 @@ td:focus{
         margin-top: 0;
     }
     .margin{
-        margin-right: 215px;
+        margin-right: 64%;
     }
 }
 @media only screen and (max-width: 470px){

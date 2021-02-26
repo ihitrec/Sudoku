@@ -99,23 +99,36 @@ $(document).ready(function () {
         }
     }
 
+    // Change range value on description click
+    let rangeValue = document.getElementsByTagName("input")[0];
+    $(".difficulty span").click(function () {
+        if (this.innerText === "Casual") {
+            rangeValue.value = "1";
+        } else if (this.innerText === "Intermediate") {
+            rangeValue.value = "2";
+        } else if (this.innerText === "Expert") {
+            rangeValue.value = "3";
+        }
+    })
+
     // Toggle difficulty
     $(".difficulty-headline").click(show);
     function show() {
-        $(".fa-sort-down").toggle(650);
-        $(".fa-minus").toggle(650);
+        $(".fa-sort-down").toggle(400);
+        $(".fa-minus").toggle(400);
         if ($(".fa-minus").css("display") === "block") {
             $(".fa-minus").css("display", "inline");
         }
-        $(".difficulty").slideToggle(650);
+        $(".difficulty").slideToggle(400);
     }
 
     // When opening the website start a new game with animations.
     function firstNewGame() {
+        rangeValue.value = "1";
         let nextLetter = 0;
         setTimeout(function () {
             for (i = 0; i < cellArray.length; i++) {
-                if (typeof intermediate1[i] === "number") {
+                if (typeof beginner1[i] === "number") {
                     nextLetter += 1;
                     showLetters(i, nextLetter);
                 }
@@ -128,7 +141,7 @@ $(document).ready(function () {
     function showLetters(i, nextLetter) {
         setTimeout(function () {
             $(cellArray[i]).addClass("intro-letter");
-            cellArray[i].innerText = intermediate1[i];
+            cellArray[i].innerText = beginner1[i];
             $(cellArray[i]).attr("contenteditable", "false");
         }, 50 * nextLetter);
     }
