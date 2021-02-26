@@ -115,7 +115,7 @@ $(document).ready(function () {
         let nextLetter = 0;
         setTimeout(function () {
             for (i = 0; i < cellArray.length; i++) {
-                if (typeof intermediate2[i] === "number") {
+                if (typeof intermediate1[i] === "number") {
                     nextLetter += 1;
                     showLetters(i, nextLetter);
                 }
@@ -128,22 +128,53 @@ $(document).ready(function () {
     function showLetters(i, nextLetter) {
         setTimeout(function () {
             $(cellArray[i]).addClass("intro-letter");
-            cellArray[i].innerText = intermediate2[i];
+            cellArray[i].innerText = intermediate1[i];
             $(cellArray[i]).attr("contenteditable", "false");
         }, 50 * nextLetter);
     }
 
     // Start a new game which fills the grid with the pre-made template.
+    let currentGrid;
+    let whichSolution;
+    let beginnerPair = [[beginner1, beginner1Solved], [beginner2, beginner2Solved], [beginner3, beginner3Solved]];
+    let whichBeginner = 0;
+    let intermediatePair = [[intermediate1, intermediate1Solved], [intermediate2, intermediate2Solved], [intermediate3, intermediate3Solved]];
+    let whichIntermediate = 0;
+    let expertPair = [[expert1, expert1Solved], [expert2, expert2Solved], [expert3, expert3Solved]];
+    let whichExpert = 0;
     $("#new-game").click(newGame);
     function newGame() {
+        currentGrid = document.getElementsByTagName("input")[0].value
         $("td").text("");
         $("td").attr("contenteditable", "true");
-        gridTemplate();
+        gridTemplate(currentGrid);
     }
-    function gridTemplate() {
-        for (i = 0; i < intermediate2.length; i++) {
-            if (typeof intermediate2[i] === "number") {
-                cellArray[i].innerText = intermediate2[i];
+    function gridTemplate(cGridParam) {
+        if (cGridParam === "1") {
+            if (whichBeginner === 3) {
+                whichBeginner = 0;
+            }
+            currentGrid = beginnerPair[whichBeginner][0];
+            whichSolution = beginnerPair[whichBeginner][1];
+            whichBeginner++;
+        } else if (cGridParam === "2") {
+            if (whichIntermediate === 3) {
+                whichIntermediate = 0;
+            }
+            currentGrid = intermediatePair[whichIntermediate][0];
+            whichSolution = intermediatePair[whichIntermediate][1];
+            whichIntermediate++;
+        } else if (cGridParam === "3") {
+            if (whichExpert === 3) {
+                whichExpert = 0;
+            }
+            currentGrid = expertPair[whichExpert][0];
+            whichSolution = expertPair[whichExpert][1];
+            whichExpert++;
+        }
+        for (i = 0; i < 81; i++) {
+            if (typeof currentGrid[i] === "number") {
+                cellArray[i].innerText = currentGrid[i];
                 $(cellArray[i]).attr("contenteditable", "false");
             }
         }
@@ -159,8 +190,8 @@ $(document).ready(function () {
         let pickACell = Math.floor(Math.random() * 81);
         let pickedCell = cellArray[pickACell];
         if ($(pickedCell).text() === "") {
-            $(pickedCell).text(intermediate2Solved[pickACell]);
-            enteredValueCheck(pickedCell, intermediate2Solved[pickACell].toString());
+            $(pickedCell).text(whichSolution[pickACell]);
+            enteredValueCheck(pickedCell, whichSolution[pickACell].toString());
         } else if (isGridFilled.includes("") === true) {
             hint();
         }
@@ -247,7 +278,7 @@ $(document).ready(function () {
 
         // If selected cell input is wrong, signal why and delete it.
         // Otherwise mark it as correct.
-        let actualValue = intermediate2Solved[cellArray.indexOf(whichCell)].toString();
+        let actualValue = whichSolution[cellArray.indexOf(whichCell)].toString();
         for (i = 0; i < 8; i++) {
             if ($(sameBox[i]).text() === whichNum) {
                 itsWrong(sameBox, i);
