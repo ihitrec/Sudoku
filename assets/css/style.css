@@ -144,6 +144,20 @@ td:focus{
     border-radius: 10px;
     font-family: 'Quicksand';
 }
+#instructions{
+    margin-top: 9px;
+    background-color: #2e54a7;
+    color: ghostwhite;
+    font-size: 23px;
+    width: 94%;
+    height: 30px;
+    opacity: .94;
+}
+#instructions:hover{
+    opacity: 1;
+    border: none;
+    box-shadow: 2px 3px 5px lightgrey;
+}
 .btn:hover{
     border:1.5px solid;
     box-shadow: 4px 6px 5px lightgrey;
@@ -170,16 +184,27 @@ td:focus{
     }
     #numpad{
         font-size: 8vw;
+        margin-bottom: 6px;
     }
     .num{
         width: 1em;
         margin: 0;
-        margin-bottom: 20px;
+    }
+    .first-row{
+        width: 94%;
+    }
+    .buttons{
+        text-align: center;
     }
     .btn{
         font-size: 7vw;
-        margin-left: 1.2em;
+        margin: 6px;
         color:#103f95;
+    }
+    #instructions{
+        font-size: 5vw;
+        width: 79%;
+        height: auto;
     }
     .btn:hover{
         border:none;
@@ -223,7 +248,7 @@ td:focus{
         width: 310px;
     }
      #numpad{
-        margin-top: 35px;
+        margin-top: 29px;
         margin-left: 15px;
         font-size: 50px;
     }
@@ -234,13 +259,13 @@ td:focus{
         margin-top: 19px;
         margin-left: 15px;
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-around;
     }
     .btn{
         height: 62px;
         font-size: 31px;
-            color:#103f95;
-
+        color:#103f95;
     }
 }
 

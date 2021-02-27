@@ -178,7 +178,7 @@ $(document).ready(function () {
     // Keep track of selected difficulty and grid cycle. Pair grids with solutions.
     let currentGrid;
     let whichSolution;
-    let whichBeginner = 0;
+    let whichBeginner = 1;
     let whichIntermediate = 0;
     let whichExpert = 0;
     let beginnerPair = [[beginner1, beginner1Solved], [beginner2, beginner2Solved], [beginner3, beginner3Solved]];
