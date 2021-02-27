@@ -275,6 +275,18 @@ $(document).ready(function () {
         }
     }
 
+    //Open instructions window
+    $("#instructions").click(showRules);
+    $(".instructions-overlay").click(hideRules);
+    function showRules() {
+        $("body").children().addClass("blur")
+        $(".instructions-overlay").slideToggle(450);
+    }
+    function hideRules() {
+        $("body").children().removeClass("blur")
+        $(".instructions-overlay").slideToggle(450);
+    }
+
     // Check entered value.
     function enteredValueCheck(whichCell, whichNum) {
         $(whichCell).attr("contenteditable", "false");
