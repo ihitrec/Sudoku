@@ -67,7 +67,7 @@ $(document).ready(function () {
         }
     }
 
-    // Add a click function on each cell. Push the last selected cell into an array.
+    // Add a click function on each cell. Push the last selected cell into a variable.
     $("td").click(selectedCell);
     let lastPressed;
     function selectedCell() {
@@ -134,21 +134,30 @@ $(document).ready(function () {
             seconds++;
         }, 1000);
     }
-    interval();
+
 
     // Change range value on description click
     let rangeValue = document.getElementsByTagName("input")[0];
     $(".difficulty span").click(function () {
         if (this.innerText === "Casual") {
-            rangeValue.value = "1";
+            if (confirm("Are you sure you want to change difficulty? The current progress will be reset.") === true) {
+                rangeValue.value = "1";
+                newGame();
+            }
         } else if (this.innerText === "Intermediate") {
-            rangeValue.value = "2";
+            if (confirm("Are you sure you want to change difficulty? The current progress will be reset.") === true) {
+                rangeValue.value = "2";
+                newGame();
+            }
         } else if (this.innerText === "Expert") {
-            rangeValue.value = "3";
+            if (confirm("Are you sure you want to change difficulty? The current progress will be reset.") === true) {
+                rangeValue.value = "3";
+                newGame();
+            }
         }
-    })
+    });
 
-    // Toggle difficulty
+    // Toggle difficulty slider
     $(".difficulty-headline").click(show);
     function show() {
         $(".fa-sort-down").toggle(400);
@@ -159,16 +168,28 @@ $(document).ready(function () {
         $(".difficulty").slideToggle(400);
     }
 
+    // Start new game on slider change.
+    $("input").on("input", rangeChanged)
+    function rangeChanged() {
+        newGameStart();
+    }
+
     // Start a new game which fills the grid with the pre-made template.
     let currentGrid;
     let whichSolution;
-    let beginnerPair = [[beginner1, beginner1Solved], [beginner2, beginner2Solved], [beginner3, beginner3Solved]];
     let whichBeginner = 0;
-    let intermediatePair = [[intermediate1, intermediate1Solved], [intermediate2, intermediate2Solved], [intermediate3, intermediate3Solved]];
     let whichIntermediate = 0;
-    let expertPair = [[expert1, expert1Solved], [expert2, expert2Solved], [expert3, expert3Solved]];
     let whichExpert = 0;
-    $("#new-game").click(newGame);
+    let beginnerPair = [[beginner1, beginner1Solved], [beginner2, beginner2Solved], [beginner3, beginner3Solved]];
+    let intermediatePair = [[intermediate1, intermediate1Solved], [intermediate2, intermediate2Solved], [intermediate3, intermediate3Solved]];
+    let expertPair = [[expert1, expert1Solved], [expert2, expert2Solved], [expert3, expert3Solved]];
+
+    $("#new-game").click(newGameStart);
+    function newGameStart() {
+        if (confirm("Are you sure you want to start a new game? The current progress will be reset.") === true) {
+            newGame();
+        }
+    }
     function newGame() {
         clearInterval(intervalID);
         interval();
@@ -225,6 +246,7 @@ $(document).ready(function () {
         setTimeout(function () {
             $("td").removeClass("intro-letter");
         }, 2500);
+        interval();
     }
     function showLetters(i, nextLetter) {
         setTimeout(function () {
