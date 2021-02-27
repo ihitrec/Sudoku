@@ -16,7 +16,9 @@ body{
     user-select: none;
     /* Vendor prefixes copied from Deni J. at Stack Overflow: https://stackoverflow.com/a/4407335/14522350 */
 }
-
+.scale{
+    display: flex;
+}
 .pointer{
     cursor: pointer;
 }
@@ -182,7 +184,7 @@ td:focus{
     height: auto;
     background-color: ghostwhite;
     margin: auto;
-    margin-top: 218px;
+    margin-top: 150px;
     border-radius: 20px;
     padding: 15px;
 }
@@ -210,6 +212,9 @@ td:focus{
     }
 }
 @media only screen and (max-width: 800px){
+    .scale{
+        display: block;
+    }
     table{
         width: 96%;
     }
@@ -284,7 +289,6 @@ td:focus{
     .btn{
         font-size: 6vw;
     }
-
 }
 
 @media only screen and (min-width: 801px){
@@ -317,10 +321,13 @@ td:focus{
 }
 
 @media only screen and (min-width: 1630px){
-    body{
+    .scale{
         transform: scale(1.5);
-        width: 50%;
         margin: 144px auto;
+    }
+    .instructions{
+        transform: scale(1.5);
+        margin-top: 250px;
     }
 }
 /* Media query -------------------------------------------------------------- END */
