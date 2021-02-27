@@ -118,3 +118,14 @@ There were no major differences in how the code is rendered on different browser
 
 > Only the bugs that required a longer time to discover and fix were put here. There were minor bugs along the way, but were not included in this section since it would be too long. For more information check out commits with "small bug fixes" in the title which have a comment for each bug fix.
 
+## Commit messages
+
+The commit messages follow conventional commit format: **type(optional scope): description**. Here are the commit message types used in this project:  
+
+1. Fix: bug fixes
+2. Feat: new features
+3. Docs: adding content to README
+4. Style: adding comments, spaces and other style changes
+5. Refractor: editing code but not functionality e.g. renaming a variable
+
+> The first 25 commit messages do not follow the standard. I started using the new format after receiving the feedback for the previous project.
