@@ -26,7 +26,8 @@ let expert3Solved = [5, 2, 1, 7, 6, 4, 8, 9, 3, 3, 4, 8, 9, 1, 5, 2, 6, 7, 9, 7,
 
 $(document).ready(function () {
 
-    // Keep table responsive.
+    /* Keep table responsive on screens less than 801px.
+    (Bigger screens have a fixed table width) */
     $("table").height($("table").width());
     $("td").height($("table").width() / 9);
     $("td").width($("table").width() / 9)
@@ -47,7 +48,7 @@ $(document).ready(function () {
     // Enable input on all table cells
     $("td").attr("contenteditable", "true");
 
-    // Add a key down function on each cell. If entered key is a number, input and check it.
+    // Add a key down function on each cell. If entered key is a valid number, input and check it.
     // Otherwise do not input it.
     $("td").keydown(isNum);
     function isNum() {
@@ -77,7 +78,7 @@ $(document).ready(function () {
         disableMobile();
     }
 
-    //  Disable mobile keyboard from popping up on selected screens.
+    //  Disable mobile keyboard from popping up on touch screens.
     let isTouch = matchMedia("(pointer:coarse)").matches;
     function disableMobile() {
         if (isTouch === true && $(lastPressed).text() === "") {
@@ -136,7 +137,7 @@ $(document).ready(function () {
     }
 
 
-    // Change range value on description click
+    // Change range value on description click. Start new game on user confirmation.
     let rangeValue = document.getElementsByTagName("input")[0];
     $(".difficulty span").click(function () {
         if (this.innerText === "Casual") {
@@ -157,7 +158,7 @@ $(document).ready(function () {
         }
     });
 
-    // Toggle difficulty slider
+    // Toggle difficulty slider visibility.
     $(".difficulty-headline").click(show);
     function show() {
         $(".fa-sort-down").toggle(400);
@@ -168,13 +169,13 @@ $(document).ready(function () {
         $(".difficulty").slideToggle(400);
     }
 
-    // Start new game on slider change.
+    // Start new game on range value change.
     $("input").on("input", rangeChanged)
     function rangeChanged() {
         newGameStart();
     }
 
-    // Start a new game which fills the grid with the pre-made template.
+    // Keep track of selected difficulty and grid cycle. Pair grids with solutions.
     let currentGrid;
     let whichSolution;
     let whichBeginner = 0;
@@ -184,6 +185,7 @@ $(document).ready(function () {
     let intermediatePair = [[intermediate1, intermediate1Solved], [intermediate2, intermediate2Solved], [intermediate3, intermediate3Solved]];
     let expertPair = [[expert1, expert1Solved], [expert2, expert2Solved], [expert3, expert3Solved]];
 
+    // On user confirmation: Restart timer, start new game based on selected difficulty and increment grid cycle.
     $("#new-game").click(newGameStart);
     function newGameStart() {
         if (confirm("Are you sure you want to start a new game? The current progress will be reset.") === true) {
@@ -256,7 +258,7 @@ $(document).ready(function () {
         }, 50 * nextLetter);
     }
 
-    // Fill out a random cell
+    // Fill out a random cell.
     $("#hint").click(hint);
     function hint() {
         let isGridFilled = [];
