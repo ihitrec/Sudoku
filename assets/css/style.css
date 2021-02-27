@@ -26,6 +26,9 @@ h1{
     padding-left: 7px;
 }
 
+.blur{
+    filter: blur(3px);
+}
 /* START ------------------------------------------------------------ Table style */
 
 table{
@@ -165,6 +168,37 @@ td:focus{
 #hint{
     width: 3em;
 }
+.instructions-overlay{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: #000000ab;
+    z-index: 1;
+    filter: blur(0);
+    display: none;
+}
+.instructions{
+    width: 46%;
+    height: auto;
+    background-color: ghostwhite;
+    margin: auto;
+    margin-top: 218px;
+    border-radius: 20px;
+    padding: 15px;
+}
+.instructions h1{
+    margin:0;
+}
+.fa-times-circle{
+    float: right;
+    font-size: .75em;
+    margin-top: 8px;
+}
+.instructions p{
+    font-size: 1.2em;
+    padding: 0 17px;
+    color: black;
+}
 
 /* Numpad style -------------------------------------------------------------- END */
 
@@ -223,10 +257,23 @@ td:focus{
     .margin{
         margin-right: 64%;
     }
+    .instructions{
+        width:85%;
+    }
 }
 @media only screen and (max-width: 470px){
     td{
         font-size: 22px;
+    }
+    .instructions h1{
+        font-size: 1.5em;
+    }
+    .fa-times-circle {
+        margin-top: 6px;
+    }
+    .instructions p {
+        font-size: 1em;
+        padding:2px;
     }
 }
 
