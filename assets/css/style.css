@@ -4,9 +4,7 @@ body{
     background-color: ghostwhite;
     color:#103f95;
     margin:0;
-    display: flex;
     justify-content: center;
-    flex-wrap:wrap;
     font-family: "Quicksand",sans-serif;
     -webkit-touch-callout: none;
     -webkit-user-select: none; 
@@ -18,6 +16,7 @@ body{
 }
 .scale{
     display: flex;
+    justify-content: center;
 }
 .pointer{
     cursor: pointer;
@@ -149,7 +148,7 @@ td:focus{
     border-radius: 10px;
     font-family: 'Quicksand';
 }
-#instructions{
+#instructions-btn{
     margin-top: 9px;
     background-color: #2e54a7;
     color: ghostwhite;
@@ -158,7 +157,7 @@ td:focus{
     height: 30px;
     opacity: .94;
 }
-#instructions:hover{
+#instructions-btn:hover{
     opacity: 1;
     border: none;
     box-shadow: 2px 3px 5px lightgrey;
@@ -178,6 +177,7 @@ td:focus{
     z-index: 1;
     filter: blur(0);
     display: none;
+    top: 0 !important;
 }
 .instructions{
     width: 46%;
@@ -226,7 +226,7 @@ td:focus{
         margin-bottom: 6px;
     }
     .num{
-        width: 1em;
+        width: 7.9vw;
         margin: 0;
     }
     .first-row{
@@ -235,14 +235,18 @@ td:focus{
     .buttons{
         text-align: center;
     }
+    #hint{
+        width: 42vw;
+    }
     .btn{
         font-size: 7vw;
         margin: 6px;
         color:#103f95;
+        width: 42vw;
     }
-    #instructions{
+    #instructions-btn{
         font-size: 5vw;
-        width: 79%;
+        width: 87vw;
         height: auto;
     }
     .btn:hover{
@@ -254,16 +258,20 @@ td:focus{
     .difficulty-headline{
         margin-top: 0;
         font-size: 20px;
+        margin-left: 6vw;
+        font-size: 3.5vw;
     }
     #timer{
-        font-size: 16px;
+        font-size: 3.4vw;
         float: right;
+        margin-right: 1vw;
+        margin-left: 0;
     }
     .margin{
         margin-right: 64%;
     }
     .instructions{
-        width:85%;
+        width: 85%;
     }
 }
 @media only screen and (max-width: 470px){
@@ -279,6 +287,9 @@ td:focus{
     .instructions p {
         font-size: 1em;
         padding:2px;
+    }
+    #timer, .difficulty-headline{
+        font-size: 15px;
     }
 }
 
@@ -324,6 +335,8 @@ td:focus{
     .scale{
         transform: scale(1.5);
         margin: 144px auto;
+        justify-content: center;
+        width: 49%;
     }
     .instructions{
         transform: scale(1.5);

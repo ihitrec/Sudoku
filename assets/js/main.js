@@ -30,12 +30,12 @@ $(document).ready(function () {
     (Bigger screens have a fixed table width) */
     $("table").height($("table").width());
     $("td").height($("table").width() / 9);
-    $("td").width($("table").width() / 9)
-    window.addEventListener("resize", resizeTable)
+    $("td").width($("table").width() / 9);
+    window.addEventListener("resize", resizeTable);
     function resizeTable() {
         $("table").height($("table").width());
         $("td").height($("table").width() / 9);
-        $("td").width($("table").width() / 9)
+        $("td").width($("table").width() / 9);
     }
 
     // Transfer all cells to new array to manipulate it.
@@ -276,7 +276,7 @@ $(document).ready(function () {
     }
 
     //Open instructions window
-    $("#instructions").click(showRules);
+    $("#instructions-btn").click(showRules);
     $(".instructions-overlay").click(hideRules);
     function showRules() {
         $("body").children().addClass("blur")
