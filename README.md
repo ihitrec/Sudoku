@@ -135,3 +135,9 @@ The commit messages follow conventional commit format: **type(optional scope): d
 5. Refractor: editing code but not functionality e.g. renaming a variable
 
 > The first 25 commit messages do not follow the standard. I started using the new format after receiving the feedback for the previous project.
+
+## Credits
+
+- The grids of varying difficulty were taken from [Math Sphere](http://www.mathsphere.co.uk/resources/MathSphereFreeResourcesSudoku.html).  
+
+- All code was written by me apart from a few vendor prefixes that I copied and credited with a comment below the code. As always, I have used [StackOverflow](), [MDN Web Docs](https://developer.mozilla.org/en-US/) and [W3Schools](https://www.w3schools.com/) as a source of inspiration.
