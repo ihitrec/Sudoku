@@ -150,6 +150,19 @@ The commit messages follow conventional commit format: **type(optional scope): d
 
 > The first 25 commit messages do not follow the standard. I started using the new format after receiving the feedback for the previous project.
 
+## Deployment
+The website can be accessed [here](https://ihitrec.github.io/King_Gym/).  
+
+The project was published using GitHub pages using the following steps:
+
+1. All code was written in Gitpod and then pushed to Github
+2. In the GitHub pages section for the Sudoku repository, the master branch was selected
+3. The website was published, providing the URL and enabling the page to be linked
+
+For more detailed information on how to deploy, visit: [Configuring a publishing source for your GitHub Pages site](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).  
+If you wish to clone the project, go to the top of the curent page and use the gitpod extension if you have it installed. Otherwise, use the following [link](https://gitpod.io/#github.com/ihitrec/Sudoku).  
+
+
 ## Credits
 - The grids of varying difficulty were taken from [Math Sphere](http://www.mathsphere.co.uk/resources/MathSphereFreeResourcesSudoku.html).  
 
