@@ -88,6 +88,12 @@ There were no major differences in how the code is rendered on different browser
 - Event is structured differently which prevents the use of **event.path**. Instead, **this** was used which turned out to be more simple anyway.  
 
 - Keydown event works in a different way which required setting a timeout function. It deletes the content if not in the 1-9 number range. 
+
+### Code validation
+
+- All HTML and CSS has been validated using the W3C validator with no errors.  
+
+- JavaScript has been validated on [Beautify Tools](https://beautifytools.com/javascript-validator.php). One of the errors shown is concerning variables in loops that are not otherwise defined. The other is timeout functions within loops referencing an outer variable which could lead to confusing semantics.  These erors are not a problem as the use case is valid.
  
 ### Responsiveness
 
