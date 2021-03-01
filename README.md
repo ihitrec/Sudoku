@@ -80,6 +80,22 @@ Since the game of Sudoku is analytical, a more serious, non-script font type wil
 
 ## Testing 
 
+### User stories testing
+- I am a first-time player and am interested in finding out how the game is played.  
+*An instructions button gives a brief explanation of the game rules as well as the features available.*
+
+- I am a casual player and I want to play a fun Sudoku game with a nice design and simplicity of use.  
+*Casual difficulty level is available and the design seems intuitive. Alerts ask for confirmation before resetting the game.*
+
+- I am an expert player and want more difficult puzzles to challenge myself and improve logic skills.  
+*Expert difficulty is available.*
+
+- I want different features that will make it easier to play the game like the undo button for when I make a mistake.  
+*There is no undo button as I have decided to remove the wrong answer and signal why. A hint button is available.*
+
+- I want the game experience to be as good on mobile as it is on desktop so I can play on the go.  
+*The game is fully responsive across devices. On-sreen keyboard is available and the standard mobile keyboad is disabled.*
+
 ### Browser Compatibility
 - Testing for desktop will be done on Mozilla Firefox, Google Chrome, Microsoft Edge and Opera. It will not be tested on Internet Explorer since the support for it is ending soon and most websites already do not support it.  
 
