@@ -54,7 +54,7 @@ $(document).ready(function () {
     function isNum() {
         let whichCell = this;
         if (/[1-9]/.test(event.key) === true) {
-            $(this).text(event.key)
+            $(this).text(event.key);
             enteredValueCheck(whichCell, event.key);
         } else {
             setTimeout(function () {
@@ -109,27 +109,27 @@ $(document).ready(function () {
         intervalID = setInterval(function () {
             if (seconds < 10) {
                 if (minutes === 0) {
-                    $("#timer").text(`00:0${seconds}`)
+                    $("#timer").text(`00:0${seconds}`);
                 } else if (minutes < 10) {
-                    $("#timer").text(`0${minutes}:0${seconds}`)
+                    $("#timer").text(`0${minutes}:0${seconds}`);
                 } else {
-                    $("#timer").text(`${minutes}:0${seconds}`)
+                    $("#timer").text(`${minutes}:0${seconds}`);
                 }
             } else if (seconds >= 10 && seconds < 60) {
                 if (minutes === 0) {
-                    $("#timer").text(`00:${seconds}`)
+                    $("#timer").text(`00:${seconds}`);
                 } else if (minutes < 10) {
-                    $("#timer").text(`0${minutes}:${seconds}`)
+                    $("#timer").text(`0${minutes}:${seconds}`);
                 } else {
-                    $("#timer").text(`${minutes}:${seconds}`)
+                    $("#timer").text(`${minutes}:${seconds}`);
                 }
             } else if (seconds === 60) {
                 minutes++;
                 seconds = 0;
                 if (minutes < 10) {
-                    $("#timer").text(`0${minutes}:00`)
+                    $("#timer").text(`0${minutes}:00`);
                 } else {
-                    $("#timer").text(`${minutes}:00`)
+                    $("#timer").text(`${minutes}:00`);
                 }
             }
             seconds++;
@@ -183,7 +183,7 @@ $(document).ready(function () {
 
     // Start new game on range value change. Revert value if cancelled.
     let prevRangeVal = 1;
-    $("input").on("input", rangeChanged)
+    $("input").on("input", rangeChanged);
     function rangeChanged() {
         newGameStart();
     }
@@ -211,7 +211,7 @@ $(document).ready(function () {
         prevRangeVal = rangeValue.value;
         clearInterval(intervalID);
         interval();
-        currentGrid = document.getElementsByTagName("input")[0].value
+        currentGrid = document.getElementsByTagName("input")[0].value;
         $("td").text("");
         $("td").attr("contenteditable", "true");
         gridTemplate(currentGrid);
@@ -291,11 +291,11 @@ $(document).ready(function () {
     $("#instructions-btn").click(showRules);
     $(".instructions-overlay").click(hideRules);
     function showRules() {
-        $("body").children().addClass("blur")
+        $("body").children().addClass("blur");
         $(".instructions-overlay").slideToggle(450);
     }
     function hideRules() {
-        $("body").children().removeClass("blur")
+        $("body").children().removeClass("blur");
         $(".instructions-overlay").slideToggle(450);
     }
 
@@ -427,6 +427,6 @@ $(document).ready(function () {
         if (isFull() === true) {
             clearInterval(intervalID);
         }
-    };
+    }
     firstNewGame();
 });
