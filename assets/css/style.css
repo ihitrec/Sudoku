@@ -288,6 +288,9 @@ td:focus{
         font-size: 1em;
         padding:2px;
     }
+    .difficulty{
+        font-size: 0.8em;
+    }
     #timer, .difficulty-headline{
         font-size: 15px;
     }

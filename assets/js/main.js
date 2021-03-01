@@ -136,6 +136,18 @@ $(document).ready(function () {
         }, 1000);
     }
 
+    // Check if grid is full.
+    function isFull() {
+        let isGridFull = [];
+        for (i = 0; i < cellArray.length; i++) {
+            isGridFull.push(cellArray[i].innerText);
+        }
+        if (isGridFull.includes("")) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     // Change range value on description click. Start new game on user confirmation.
     let rangeValue = document.getElementsByTagName("input")[0];
@@ -169,7 +181,8 @@ $(document).ready(function () {
         $(".difficulty").slideToggle(400);
     }
 
-    // Start new game on range value change.
+    // Start new game on range value change. Revert value if cancelled.
+    let prevRangeVal = 1;
     $("input").on("input", rangeChanged)
     function rangeChanged() {
         newGameStart();
@@ -190,9 +203,12 @@ $(document).ready(function () {
     function newGameStart() {
         if (confirm("Are you sure you want to start a new game? The current progress will be reset.") === true) {
             newGame();
+        } else {
+            rangeValue.value = prevRangeVal;
         }
     }
     function newGame() {
+        prevRangeVal = rangeValue.value;
         clearInterval(intervalID);
         interval();
         currentGrid = document.getElementsByTagName("input")[0].value
@@ -261,16 +277,12 @@ $(document).ready(function () {
     // Fill out a random cell.
     $("#hint").click(hint);
     function hint() {
-        let isGridFilled = [];
-        for (i = 0; i < cellArray.length; i++) {
-            isGridFilled.push(cellArray[i].innerText);
-        }
         let pickACell = Math.floor(Math.random() * 81);
         let pickedCell = cellArray[pickACell];
         if ($(pickedCell).text() === "") {
             $(pickedCell).text(whichSolution[pickACell]);
             enteredValueCheck(pickedCell, whichSolution[pickACell].toString());
-        } else if (isGridFilled.includes("") === true) {
+        } else if (isFull() === false) {
             hint();
         }
     }
@@ -411,6 +423,9 @@ $(document).ready(function () {
                     $(whichCell).removeClass("correct");
                 }, 400);
             }
+        }
+        if (isFull() === true) {
+            clearInterval(intervalID);
         }
     };
     firstNewGame();
