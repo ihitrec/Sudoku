@@ -39,11 +39,8 @@ $(document).ready(function () {
     }
 
     // Transfer all cells to new array to manipulate it.
-    let cellArray = [];
     let cellArrayItems = document.getElementsByTagName("td");
-    for (i = 0; i < cellArrayItems.length; i++) {
-        cellArray.push(cellArrayItems[i]);
-    }
+    let cellArray = Object.values(cellArrayItems);
 
     // Enable input on all table cells
     $("td").attr("contenteditable", "true");
@@ -173,12 +170,15 @@ $(document).ready(function () {
     // Toggle difficulty slider visibility.
     $(".difficulty-headline").click(show);
     function show() {
+        $(".difficulty-headline").unbind("click");
         $(".fa-sort-down").toggle(400);
         $(".fa-minus").toggle(400);
         if ($(".fa-minus").css("display") === "block") {
             $(".fa-minus").css("display", "inline");
         }
-        $(".difficulty").slideToggle(400);
+        $(".difficulty").slideToggle(400, function () {
+            $(".difficulty-headline").click(show);
+        });
     }
 
     // Start new game on range value change. Revert value if cancelled.
@@ -291,12 +291,22 @@ $(document).ready(function () {
     $("#instructions-btn").click(showRules);
     $(".instructions-overlay").click(hideRules);
     function showRules() {
+        $("#instructions-btn").unbind("click");
+        $(".instructions-overlay").unbind("click");
         $("body").children().addClass("blur");
-        $(".instructions-overlay").slideToggle(450);
+        $(".instructions-overlay").slideToggle(450, function () {
+            $("#instructions-btn").click(showRules);
+            $(".instructions-overlay").click(hideRules);
+        });
     }
     function hideRules() {
+        $(".instructions-overlay").unbind("click");
+        $("#instructions-btn").unbind("click");
         $("body").children().removeClass("blur");
-        $(".instructions-overlay").slideToggle(450);
+        $(".instructions-overlay").slideToggle(450, function () {
+            $(".instructions-overlay").click(hideRules);
+            $("#instructions-btn").click(showRules);
+        });
     }
 
     // Check entered value.
