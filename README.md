@@ -23,14 +23,14 @@ There does not seem to be a lot of research available on what a typical Sudoku p
 
 #### Scope
 1. The game should be playable and offers the same experience across different devices. This means that a number keyboard is on screen to enable mobile inputs.
-2. The minimum playable version includes a premade grid, a win/lose scenario when the grid is filled and a new game button.
+2. The minimum playable version includes a premade grid, a right/wrong signal on input and a new game button.
 3. Game instructions are included.
 4. Grid difficulty options for premade grids are available.
 5. Undo button is available.
 6. A hint button is available.
 7. A generator should generate a new grid each game.
 
-> This list should be done in order as the tasks were defined in the strategy plane. When it comes to grid generator, it is not something that necessary improves the game since the difficulty is not generated. From the users perspective it is not as important, but as it is the hardest thing to do and it is a good JavaScript challenge, it might still be included.
+> This list should be done in order as the tasks were defined in the strategy plane. When it comes to grid generator, it is not something that necessary improves the game since the difficulty is not generated. From the users perspective it is not as important, but as it is the hardest thing to do and it is a good JavaScript challenge, it might still be included in future updates.
 
 #### Structure
 The website is a simple, single-page game and no advanced structure is necessary. Main focus will be the Sudoku grid which will be surrounded by other features. The number keyboard should be on the bottom while on mobile since it is easy to reach. The only feature that will lead from the main page will be the instructions. They will be implemented via modal which has an easy navigation.
@@ -97,16 +97,18 @@ Since the game of Sudoku is analytical, a more serious, non-script font type wil
 *The game is fully responsive across devices. On-sreen keyboard is available and the standard mobile keyboad is disabled.*
 
 ### Browser Compatibility
-- Testing for desktop will be done on Mozilla Firefox, Google Chrome, Microsoft Edge and Opera. It will not be tested on Internet Explorer since the support for it is ending soon and most websites already do not support it.  
+Testing for desktop is done on Mozilla Firefox, Google Chrome, Microsoft Edge and Opera. It is not tested on Internet Explorer since the support for it is ending soon and most websites already do not support it.  
 
-- Mobile testing will be done on Safari, Samsung Internet and Google Chrome for mobile on different devices.
+Mobile testing is done on Safari, Samsung Internet and Google Chrome for mobile on different devices.
 
 #### Issues
-There were no major differences in how the code is rendered on different browsers. The only browser that presented a few issues is Firefox. Some of them are:
+Testing across different devices showed a slight issue on an older iOS device. Disabling the mobile keyboard did not work as intended. Modifying the function so that content of table cells is not editable fixed the issue.
+
+There are no major differences in how the code is rendered on different browsers. The only browser that presented a few issues is Firefox. Some of them are:
 
 - Event is structured differently which prevents the use of **event.path**. Instead, **this** was used which turned out to be more simple anyway.  
 
-- Keydown event works in a different way which required setting a timeout function. It deletes the content if not in the 1-9 number range. 
+- Keydown event works in a different way which required setting a timeout function. It deletes the content if not in the 1-9 number range.
 
 ### Code validation
 - All HTML and CSS has been validated using the W3C validator with no errors.  
@@ -166,4 +168,4 @@ If you wish to clone the project, go to the top of the curent page and use the g
 ## Credits
 - The grids of varying difficulty were taken from [Math Sphere](http://www.mathsphere.co.uk/resources/MathSphereFreeResourcesSudoku.html).  
 
-- All code was written by me apart from a few vendor prefixes that I copied and credited with a comment below the code. As always, I have used [StackOverflow](), [MDN Web Docs](https://developer.mozilla.org/en-US/) and [W3Schools](https://www.w3schools.com/) as a source of inspiration.
+- All code was written by me apart from the vendor prefixes that were added using [Autoprefixer](https://autoprefixer.github.io/).  As always, I have used [StackOverflow](), [MDN Web Docs](https://developer.mozilla.org/en-US/) and [W3Schools](https://www.w3schools.com/) as a source of inspiration.
