@@ -201,7 +201,9 @@ $(document).ready(function () {
         if (confirm("Are you sure you want to start a new game? The current progress will be reset.") === true) {
             newGame();
         } else {
-            rangeValue.value = prevRangeVal;
+            setTimeout(function () {
+                rangeValue.value = prevRangeVal;
+            }, 10)
         }
     }
     function newGame() {
