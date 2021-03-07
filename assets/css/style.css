@@ -123,6 +123,9 @@ td:focus{
 .difficulty span{
     font-weight: 600;
 }
+.difficulty span:nth-child(1){
+    display: block;
+}
 .margin{
     margin-right: 148px;
 }
@@ -146,7 +149,7 @@ td:focus{
     outline: none;
     box-shadow: 2px 3px 5px lightgrey;
     border-radius: 10px;
-    font-family: 'Quicksand';
+    font-family: 'Quicksand',sans-serif;
 }
 #instructions-btn{
     margin-top: 9px;
@@ -172,7 +175,7 @@ td:focus{
 .instructions-overlay{
     height: 100%;
     width: 100%;
-    position: absolute;
+    position: fixed;
     background-color: #000000ab;
     z-index: 1;
     filter: blur(0);
@@ -184,9 +187,10 @@ td:focus{
     height: auto;
     background-color: ghostwhite;
     margin: auto;
-    margin-top: 150px;
+    margin-top: 5vh;
     border-radius: 20px;
     padding: 15px;
+    text-align: justify;
 }
 .instructions h1{
     margin:0;
