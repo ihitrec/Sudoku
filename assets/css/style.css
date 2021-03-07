@@ -1,22 +1,32 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 body{
     background-color: ghostwhite;
     color:#103f95;
     margin:0;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     font-family: "Quicksand",sans-serif;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none; 
-    -khtml-user-select: none; 
-    -moz-user-select: none; 
-    -ms-user-select: none; 
-    user-select: none;
-    /* Vendor prefixes copied from Deni J. at Stack Overflow: https://stackoverflow.com/a/4407335/14522350 */
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 }
 .scale{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 .pointer{
     cursor: pointer;
@@ -28,7 +38,8 @@ h1{
 }
 
 .blur{
-    filter: blur(3px);
+    -webkit-filter: blur(3px);
+            filter: blur(3px);
 }
 /* START ------------------------------------------------------------ Table style */
 
@@ -107,14 +118,16 @@ td:focus{
     width: 85%;
 }
 .slider::-webkit-slider-thumb{
-    appearance: none;
+    -webkit-appearance: none;
+            appearance: none;
     width: 15px;
     height: 15px;
     border-radius: 100%;
     background-color: #0175fd;
 }
 ::-moz-range-thumb{
-      appearance: none;
+      -moz-appearance: none;
+           appearance: none;
     width: 15px;
     height: 15px;
     border-radius: 100%;
@@ -137,17 +150,20 @@ td:focus{
 .num{
     margin:5px;
     display: inline-block;
-    box-shadow: 1px 1px 5px lightgrey;
+    -webkit-box-shadow: 1px 1px 5px lightgrey;
+            box-shadow: 1px 1px 5px lightgrey;
     border-radius: 20px;
 }
 .num:hover{
-    box-shadow: 2px 2px 5px lightgrey;
+    -webkit-box-shadow: 2px 2px 5px lightgrey;
+            box-shadow: 2px 2px 5px lightgrey;
 }
 .btn{
     background-color: ghostwhite;
     border: none;
     outline: none;
-    box-shadow: 2px 3px 5px lightgrey;
+    -webkit-box-shadow: 2px 3px 5px lightgrey;
+            box-shadow: 2px 3px 5px lightgrey;
     border-radius: 10px;
     font-family: 'Quicksand',sans-serif;
 }
@@ -163,11 +179,13 @@ td:focus{
 #instructions-btn:hover{
     opacity: 1;
     border: none;
-    box-shadow: 2px 3px 5px lightgrey;
+    -webkit-box-shadow: 2px 3px 5px lightgrey;
+            box-shadow: 2px 3px 5px lightgrey;
 }
 .btn:hover{
     border:1.5px solid;
-    box-shadow: 4px 6px 5px lightgrey;
+    -webkit-box-shadow: 4px 6px 5px lightgrey;
+            box-shadow: 4px 6px 5px lightgrey;
 }
 #hint{
     width: 3em;
@@ -178,7 +196,8 @@ td:focus{
     position: fixed;
     background-color: #000000ab;
     z-index: 1;
-    filter: blur(0);
+    -webkit-filter: blur(0);
+            filter: blur(0);
     display: none;
     top: 0 !important;
 }
@@ -327,9 +346,13 @@ td:focus{
     .buttons{
         margin-top: 19px;
         margin-left: 15px;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        -ms-flex-pack: distribute;
+            justify-content: space-around;
     }
     .btn{
         height: 62px;
@@ -340,13 +363,19 @@ td:focus{
 
 @media only screen and (min-width: 1630px){
     .scale{
-        transform: scale(1.5);
+        -webkit-transform: scale(1.5);
+            -ms-transform: scale(1.5);
+                transform: scale(1.5);
         margin: 144px auto;
-        justify-content: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
         width: 49%;
     }
     .instructions{
-        transform: scale(1.5);
+        -webkit-transform: scale(1.5);
+            -ms-transform: scale(1.5);
+                transform: scale(1.5);
         margin-top: 250px;
     }
 }
@@ -355,7 +384,24 @@ td:focus{
 /* START ------------------------------------------------------------ Animations */
 
 .light-up {
-  animation: light-up .6s;
+  -webkit-animation: light-up .6s;
+          animation: light-up .6s;
+}
+@-webkit-keyframes light-up {
+  0% {
+    background-color: forestgreen   ;
+    opacity: .75;
+  }
+  50%{
+    -webkit-transform: scale(1.15);
+            transform: scale(1.15);
+  }
+  100% {
+    background-color: aliceblue;
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
 }
 @keyframes light-up {
   0% {
@@ -363,42 +409,76 @@ td:focus{
     opacity: .75;
   }
   50%{
-    transform: scale(1.15);
+    -webkit-transform: scale(1.15);
+            transform: scale(1.15);
   }
   100% {
     background-color: aliceblue;
     opacity: 1;
-    transform: scale(1);
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
 }
 
 .intro{
-    animation: intro .70s;
-    animation-timing-function: linear;
+    -webkit-animation: intro .70s;
+            animation: intro .70s;
+    -webkit-animation-timing-function: linear;
+            animation-timing-function: linear;
+}
+@-webkit-keyframes intro {
+  0% {
+    opacity: .1;
+    -webkit-transform: scale(0.1);
+            transform: scale(0.1);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
 }
 @keyframes intro {
   0% {
     opacity: .1;
-    transform: scale(0.1);
+    -webkit-transform: scale(0.1);
+            transform: scale(0.1);
   }
   100% {
-    transform: scale(1);
+    -webkit-transform: scale(1);
+            transform: scale(1);
     opacity: 1;
   }
 }
 
 .intro-letter{
-    animation: intro-letter .5s;
-    animation-timing-function: ease-in;
+    -webkit-animation: intro-letter .5s;
+            animation: intro-letter .5s;
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+}
+@-webkit-keyframes intro-letter {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(2);
+            transform: scale(2);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
 }
 @keyframes intro-letter {
   0% {
     opacity: 0;
-    transform: scale(2);
+    -webkit-transform: scale(2);
+            transform: scale(2);
   }
   100% {
     opacity: 1;
-    transform: scale(1);
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
 }
 
