@@ -81,16 +81,13 @@ $(document).ready(function () {
         if (isTouch === true && $(lastPressed).text() === "") {
             $(lastPressed).attr("contenteditable", "false");
             $(lastPressed).addClass("focused");
-            setTimeout(function () {
-                $(lastPressed).attr("contenteditable", "true");
-            }, 100);
         }
     }
 
     // Enter the pressed number on numpad into the last selected cell.
     $(".num").click(numPad);
     function numPad() {
-        if ($(lastPressed).attr("contenteditable") === "true") {
+        if ($(lastPressed).text() === "") {
             lastPressed.innerText = this.innerText;
             let lastSelectedNum = this.innerText;
             enteredValueCheck(lastPressed, lastSelectedNum);
@@ -263,8 +260,12 @@ $(document).ready(function () {
         }, 400);
         setTimeout(function () {
             $("td").removeClass("intro-letter");
+            if (isTouch === true) {
+                $("td").attr("contenteditable", "false");
+            }
         }, 2500);
         interval();
+
     }
     function showLetters(i, nextLetter) {
         setTimeout(function () {
@@ -371,10 +372,10 @@ $(document).ready(function () {
                 $(whichCell).removeClass("wrong");
                 $(whichCell).attr("contenteditable", "true");
                 $(whichCell).text("");
+                disableMobile();
                 if (document.activeElement === whatsFocused && isTouch === false) {
                     whichCell.focus();
                 }
-                disableMobile();
             }, 600);
         }
 
@@ -407,10 +408,10 @@ $(document).ready(function () {
                     $(whichCell).removeClass("wrong");
                     $(whichCell).attr("contenteditable", "true");
                     $(whichCell).text("");
+                    disableMobile();
                     if (document.activeElement === whatsFocused && isTouch === false) {
                         whichCell.focus();
                     }
-                    disableMobile();
                 }, 600);
             } else if (i === 7) {
                 if (sameRowText.includes("") === false) {
