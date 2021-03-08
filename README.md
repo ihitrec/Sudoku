@@ -17,7 +17,7 @@ This is the second project in Code Institute Full Stack Developer program based 
 #### Strategy
 There does not seem to be a lot of research available on what a typical Sudoku player is like and if the preferred way of playing is desktop or mobile. Inspiration on design and features to include will be taken from other online Sudoku games. Simple features will be implemented with possible addition of more complex features depending on feasibility. The main goals are to create a fully responsive website/game that covers most or all of the needs expressed in the user stories. The game should be challenging, easy to use and fun to play.  
 
-![Importance/viability chart](assets/images/README_images/chart.jpg)
+![Importance/viability chart](assets/readme_images/chart.jpg)
 
 > I have generated a chart based on the importance and feasibility of the main goals. This is just an estimate and it might prove that some features are harder to implement than expected. Most goals are high on the chart apart from generating a new sudoku grid each game. That will have the lowest priority.
 
@@ -36,8 +36,8 @@ There does not seem to be a lot of research available on what a typical Sudoku p
 The website is a simple, single-page game and no advanced structure is necessary. Main focus will be the Sudoku grid which will be surrounded by other features. The number keyboard should be on the bottom while on mobile since it is easy to reach. The only feature that will lead from the main page will be the instructions. They will be implemented via modal which has an easy navigation.
 
 #### Skeleton
-[Mobile wireframe](assets/images/README_images/mobile-wireframe.png)  
-[Desktop wireframe](assets/images/README_images/desktop-wireframe.png)
+[Mobile wireframe](assets/readme_images/mobile-wireframe.png)  
+[Desktop wireframe](assets/readme_images/desktop-wireframe.png)
 
 > The wireframes are not too complex and just show the general layout which will more than likely be improved upon.
 
@@ -61,13 +61,13 @@ Since the game of Sudoku is analytical, a more serious, non-script font type Qui
 ## Technologies used
 
 ##### Languages and frameworks
-![HTML5 icon](assets/images/README_images/html-icon.png) HTML5  
+![HTML5 icon](assets/readme_images/html-icon.png) HTML5  
 
-![CSS3 icon](assets/images/README_images/css-icon.png) CSS3  
+![CSS3 icon](assets/readme_images/css-icon.png) CSS3  
 
-![JavaScript icon](assets/images/README_images/javascript-icon.png) JavaScript  
+![JavaScript icon](assets/readme_images/javascript-icon.png) JavaScript  
 
-![jQuery icon](assets/images/README_images/jquery-icon.png) jQuery
+![jQuery icon](assets/readme_images/jquery-icon.png) jQuery
 
 ##### Repository, coding environment and version control
 - [Github](https://www.gitpod.io/) - hosting platform for managing repositories and more
