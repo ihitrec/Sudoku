@@ -42,7 +42,7 @@ The website is a simple, single-page game and no advanced structure is necessary
 > The wireframes are not too complex and just show the general layout which will more than likely be improved upon.
 
 #### Surface
-Since the game of Sudoku is analytical, a more serious, non-script font type will be used. 
+Since the game of Sudoku is analytical, a more serious, non-script font type Quicksand is used. There is a light color pallete with sufficient contrast that is easy to look at for longer periods of time.
 
 ## Features
 - Hint button
@@ -77,6 +77,7 @@ Since the game of Sudoku is analytical, a more serious, non-script font type wil
 #####  Resources
 - [Google Fonts](https://fonts.google.com/) - source of all fonts on the website
 - [Adobe XD](https://www.adobe.com/ie/products/xd.html) - used for frameworks
+- [Font Awesome](https://fontawesome.com/) - used for icons
 
 ## Testing 
 
@@ -127,9 +128,9 @@ There are no major differences in how the code is rendered on different browsers
 - When starting the project, it seemed that only a keyup event would be possible to implement. That decision caused a few bugs outlined in the next section which required the event to be changed. It happened to be useful since a part of the code was refractured and simplified. I realised it is good to revisit previously written code at a later stage of the project with a fresh perspective.
 
 ### Bugs
-- A disableMobile() function used to disable mobile keyboards was making the keyboard occasionally pop up and disappear. A timeout function was added to enable the input again after 100 milliseconds which fixed the issue.  
+- A disableMobile() function used to disable mobile keyboards was making the keyboard occasionally pop up and disappear. A timeout function was first added to enable the input again after 100 milliseconds which fixed the issue. In the end, the function was changed so that the cell content was not editable. Changing text with numpad still works.  
 
-- When focus was put on another cell while the enteredValueCheck() function was running, the values inside the second for loop were changed as well. Local variables were added to store values for each function execution.  
+- When focus was put on another cell while the enteredValueCheck() function was running, the values inside the second for loop were changed as well. Now the function takes parameters that stay the same untill the end.
 
 - Entering wrong values made them appear in the grid before dissapearing. Changing the input function to keydown fixed the issue.  
 
@@ -139,7 +140,7 @@ There are no major differences in how the code is rendered on different browsers
 
 - Changing the cursor to pointer made the selection to be highlited for a second on mobile. I have used a media pointer feature to determine what device the website is accessed from. The feature is not fully accurate as it depends on the user agent, but it is the closest way of fixing the problem at the moment. The only disadvantage of it not being loaded properly is that the cursor is not going to change. 
 
-> Only the bugs that required a longer time to discover and fix were put here. There were minor bugs along the way, but were not included in this section since it would be too long. For more information check out commits with "small bug fixes" in the title which have a comment for each bug fix.
+> Only the bugs that required a longer time to discover and fix were put here. There were minor bugs along the way, but were not included in this section since it would be too long. For more information check out commits with "small bug fixes" in the title which have a comment for each bug fix. I was testing and discovering bugs trough the developement proccess, fixing them right away. After the final check, all features are tested and appear to be working as intended.
 
 ## Commit messages
 The commit messages follow conventional commit format: **type(optional scope): description**. Here are the commit message types used in this project:  
