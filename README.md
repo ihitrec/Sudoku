@@ -42,7 +42,7 @@ The website is a simple, single-page game and no advanced structure is necessary
 > The wireframes are not too complex and just show the general layout which will more than likely be improved upon.
 
 #### Surface
-Since the game of Sudoku is analytical, a more serious, non-script font type Quicksand is used. There is a light color pallete with sufficient contrast that is easy to look at for longer periods of time.
+Since the game of Sudoku is analytical, a more serious, non-script font type Quicksand is used. There is a light color palette with sufficient contrast that is easy to look at for longer periods of time.
 
 ## Features
 - Hint button
@@ -69,9 +69,9 @@ Since the game of Sudoku is analytical, a more serious, non-script font type Qui
 
 ![jQuery icon](assets/images/README_images/jquery-icon.png) jQuery
 
-##### Repository, coding enviroment and version control
+##### Repository, coding environment and version control
 - [Github](https://www.gitpod.io/) - hosting platform for managing repositories and more
-- [Gitpod](https://www.gitpod.io/) - coding enviroment
+- [Gitpod](https://www.gitpod.io/) - coding environment
 - [Git](https://git-scm.com/) - used for version control
 
 #####  Resources
@@ -95,7 +95,7 @@ Since the game of Sudoku is analytical, a more serious, non-script font type Qui
 *There is no undo button as I have decided to remove the wrong answer and signal why. A hint button is available.*
 
 - I want the game experience to be as good on mobile as it is on desktop so I can play on the go.  
-*The game is fully responsive across devices. On-sreen keyboard is available and the standard mobile keyboad is disabled.*
+*The game is fully responsive across devices. On-screen keyboard is available and the standard mobile keyboard is disabled.*
 
 ### Browser Compatibility
 Testing for desktop is done on Mozilla Firefox, Google Chrome, Microsoft Edge and Opera. It is not tested on Internet Explorer since the support for it is ending soon and most websites already do not support it.  
@@ -114,7 +114,7 @@ There are no major differences in how the code is rendered on different browsers
 ### Code validation
 - All HTML and CSS has been validated using the W3C validator with no errors.  
 
-- JavaScript has been validated on [Beautify Tools](https://beautifytools.com/javascript-validator.php). One of the errors shown is concerning variables in loops that are not otherwise defined. The other is timeout functions within loops referencing an outer variable which could lead to confusing semantics.  These erors are not a problem as the use case is valid.
+- JavaScript has been validated on [Beautify Tools](https://beautifytools.com/javascript-validator.php). One of the errors shown is concerning variables in loops that are not otherwise defined. The other is timeout functions within loops referencing an outer variable which could lead to confusing semantics.  These errors are not a problem as the use case is valid.
  
 ### Responsiveness
 - Since the screen is smaller on mobile, there is a numpad on the website. Having a mobile keyboard pop up every time a field is selected would not be an enjoyable experience. Therefore, the keyboard is disabled on screens that have a touch capability.  
@@ -123,24 +123,24 @@ There are no major differences in how the code is rendered on different browsers
 
 
 ### Encountered issues and challenges
-- I assumed that the number that the user entered was correct if it does not match any in the same column, row or square. It turned out to be more complicated than that since the grid has a unique solution. The row, column and square checks can still be used to indicate what the user did wrong. Therfore, it did not cause a setback but it made me rethink the validation proccess. The entered number is now checked by what it should be in the solution.  
+- I assumed that the number that the user entered was correct if it does not match any in the same column, row or square. It turned out to be more complicated than that since the grid has a unique solution. The row, column and square checks can still be used to indicate what the user did wrong. Therefore, it did not cause a setback but it made me rethink the validation process. The entered number is now checked by what it should be in the solution.  
 
 - When starting the project, it seemed that only a keyup event would be possible to implement. That decision caused a few bugs outlined in the next section which required the event to be changed. It happened to be useful since a part of the code was refractured and simplified. I realised it is good to revisit previously written code at a later stage of the project with a fresh perspective.
 
 ### Bugs
 - A disableMobile() function used to disable mobile keyboards was making the keyboard occasionally pop up and disappear. A timeout function was first added to enable the input again after 100 milliseconds which fixed the issue. In the end, the function was changed so that the cell content was not editable. Changing text with numpad still works.  
 
-- When focus was put on another cell while the enteredValueCheck() function was running, the values inside the second for loop were changed as well. Now the function takes parameters that stay the same untill the end.
+- When focus was put on another cell while the enteredValueCheck() function was running, the values inside the second for loop were changed as well. Now the function takes parameters that stay the same until the end.
 
-- Entering wrong values made them appear in the grid before dissapearing. Changing the input function to keydown fixed the issue.  
+- Entering wrong values made them appear in the grid before disappearing. Changing the input function to keydown fixed the issue.  
 
 - Entering values rapidly while clicking on random cells validates even the wrong inputs. Changing the input function to keydown fixed the issue.  
 
 - The thing that caused the most responsiveness issues is the bigger table border. It would look good on one screen but would not be visible on another. I suspected it was because of the change in pixel ratios, but that is probably just part of the issue. Another factor was the zoom level and the difference in how browsers calculate border-width size. I have changed the border to double which solves the big problem of the dividing borders not being visible. The borders change width to a bit smaller than the desired 1.5px but they are still visible enough.  
 
-- Changing the cursor to pointer made the selection to be highlited for a second on mobile. I have used a media pointer feature to determine what device the website is accessed from. The feature is not fully accurate as it depends on the user agent, but it is the closest way of fixing the problem at the moment. The only disadvantage of it not being loaded properly is that the cursor is not going to change. 
+- Changing the cursor to pointer made the selection to be highlighted for a second on mobile. I have used a media pointer feature to determine what device the website is accessed from. The feature is not fully accurate as it depends on the user agent, but it is the closest way of fixing the problem at the moment. The only disadvantage of it not being loaded properly is that the cursor is not going to change. 
 
-> Only the bugs that required a longer time to discover and fix were put here. There were minor bugs along the way, but were not included in this section since it would be too long. For more information check out commits with "small bug fixes" in the title which have a comment for each bug fix. I was testing and discovering bugs trough the developement proccess, fixing them right away. After the final check, all features are tested and appear to be working as intended.
+> Only the bugs that required a longer time to discover and fix were put here. There were minor bugs along the way, but were not included in this section since it would be too long. For more information check out commits with "small bug fixes" in the title which have a comment for each bug fix. I was testing and discovering bugs trough the development process, fixing them right away. After the final check, all features are tested and appear to be working as intended.
 
 ## Commit messages
 The commit messages follow conventional commit format: **type(optional scope): description**. Here are the commit message types used in this project:  
@@ -163,7 +163,7 @@ The project was published using GitHub pages using the following steps:
 3. The website was published, providing the URL and enabling the page to be linked
 
 For more detailed information on how to deploy, visit: [Configuring a publishing source for your GitHub Pages site](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).  
-If you wish to clone the project, go to the top of the curent page and use the gitpod extension if you have it installed. Otherwise, use the following [link](https://gitpod.io/#github.com/ihitrec/Sudoku).  
+If you wish to clone the project, go to the top of the current page and use the Gitpod extension if you have it installed. Otherwise, use the following [link](https://gitpod.io/#github.com/ihitrec/Sudoku).  
 
 
 ## Credits
