@@ -87,12 +87,13 @@ td:focus{
 
 .difficulty-headline{
     font-size: 19px;
-    color: gray;
+    color: #545454;
     margin-top: 86px;
     display: inline-block;
 }
 .fas{
     margin-left:5px;
+    color: gray;
 }
 .fa-minus{
     display: none;
