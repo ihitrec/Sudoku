@@ -3,6 +3,8 @@ The aim of this project is to create a grid based number puzzle called Sudoku. I
   
 This is the second project in Code Institute Full Stack Developer program based on HTML, CSS, JavaScript and optional frameworks.
 
+![Website look](assets/readme_images/final-design.png)
+
 ## UX
 
 ### User Stories
@@ -111,10 +113,14 @@ There are no major differences in how the code is rendered on different browsers
 
 - Keydown event works in a different way which required setting a timeout function. It deletes the content if not in the 1-9 number range.
 
+### Accessibility
+
+I did not focus on accessibility in terms of optimisation for screen-readers since it is not possible to play the game that way. Otherwise, elements satisfy the WCAG contrast guidelines. 
+
 ### Code validation
 - All HTML and CSS has been validated using the W3C validator with no errors.  
 
-- JavaScript has been validated on [Beautify Tools](https://beautifytools.com/javascript-validator.php). One of the errors shown is concerning variables in loops that are not otherwise defined. The other is timeout functions within loops referencing an outer variable which could lead to confusing semantics.  These errors are not a problem as the use case is valid.
+- JavaScript has been validated on [Beautify Tools](https://beautifytools.com/javascript-validator.php). The error shown is timeout functions within loops referencing an outer variable which could lead to confusing semantics.  The error is not a problem as the use case is valid.
  
 ### Responsiveness
 - Since the screen is smaller on mobile, there is a numpad on the website. Having a mobile keyboard pop up every time a field is selected would not be an enjoyable experience. Therefore, the keyboard is disabled on screens that have a touch capability.  
@@ -154,7 +160,7 @@ The commit messages follow conventional commit format: **type(optional scope): d
 > The first 25 commit messages do not follow the standard. I started using the new format after receiving the feedback for the previous project.
 
 ## Deployment
-The website can be accessed [here](https://ihitrec.github.io/King_Gym/).  
+The website can be accessed [here](https://ihitrec.github.io/Sudoku/).  
 
 The project was published using GitHub pages using the following steps:
 
