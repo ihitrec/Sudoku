@@ -54,12 +54,10 @@ $(document).ready(function () {
             $(this).text(event.key);
             enteredValueCheck(whichCell, event.key);
         } else {
-            setTimeout(function () {
-                $(whichCell).text("");
-            }, 10);
             $(whichCell).attr("contenteditable", "false");
             $(whichCell).attr("contenteditable", "true");
             setTimeout(function () {
+                $(whichCell).text("");
                 $(whichCell).focus();
             }, 10);
         }
@@ -133,7 +131,7 @@ $(document).ready(function () {
     // Check if grid is full.
     function isFull() {
         let isGridFull = [];
-        for (i = 0; i < cellArray.length; i++) {
+        for (let i = 0; i < cellArray.length; i++) {
             isGridFull.push(cellArray[i].innerText);
         }
         if (isGridFull.includes("")) {
@@ -203,7 +201,7 @@ $(document).ready(function () {
         } else {
             setTimeout(function () {
                 rangeValue.value = prevRangeVal;
-            }, 10)
+            }, 10);
         }
     }
     function newGame() {
@@ -238,7 +236,7 @@ $(document).ready(function () {
             whichSolution = expertPair[whichExpert][1];
             whichExpert++;
         }
-        for (i = 0; i < 81; i++) {
+        for (let i = 0; i < 81; i++) {
             if (typeof currentGrid[i] === "number") {
                 cellArray[i].innerText = currentGrid[i];
                 $(cellArray[i]).attr("contenteditable", "false");
@@ -253,7 +251,7 @@ $(document).ready(function () {
         rangeValue.value = "1";
         let nextLetter = 0;
         setTimeout(function () {
-            for (i = 0; i < cellArray.length; i++) {
+            for (let i = 0; i < cellArray.length; i++) {
                 if (typeof beginner1[i] === "number") {
                     nextLetter += 1;
                     showLetters(i, nextLetter);
@@ -267,7 +265,6 @@ $(document).ready(function () {
             }
         }, 2500);
         interval();
-
     }
     function showLetters(i, nextLetter) {
         setTimeout(function () {
@@ -290,7 +287,7 @@ $(document).ready(function () {
         }
     }
 
-    //Open instructions window
+    //Open and close instructions window. 
     $("#instructions-btn").click(showRules);
     $(".instructions-overlay").click(hideRules);
     function showRules() {
@@ -324,11 +321,11 @@ $(document).ready(function () {
             let fitsHowMany = Math.floor(reduceToSameCol / 9);
             reduceToSameCol = reduceToSameCol - (9 * fitsHowMany);
         }
-        for (j = reduceToSameCol; j < 81; j += 9) {
+        for (let j = reduceToSameCol; j < 81; j += 9) {
             sameCol.push(cellArray[j]);
             sameColText.push(cellArray[j].innerText);
         }
-        reduceToSameRow = cellArray.indexOf(sameCol[0]);// Belongs to same row part
+        let reduceToSameRow = cellArray.indexOf(sameCol[0]);// Belongs to same row part
         let removeACell = sameCol.indexOf(whichCell);
         sameCol.splice(removeACell, 1);
         sameColText.splice(removeACell, 1);
@@ -337,7 +334,7 @@ $(document).ready(function () {
         let sameRow = [];
         let sameRowText = [];
         let firstRowIndex = cellArray.indexOf(whichCell) - reduceToSameRow;
-        for (nineTimes = 0; nineTimes < 9; nineTimes++) {
+        for (let nineTimes = 0; nineTimes < 9; nineTimes++) {
             if (nineTimes === reduceToSameRow) {
                 continue;
             } else {
@@ -351,7 +348,7 @@ $(document).ready(function () {
         let sameBox = [];
         let sameBoxText = [];
         let boxes = [[0, 1, 2, 9, 10, 11, 18, 19, 20], [3, 4, 5, 12, 13, 14, 21, 22, 23], [6, 7, 8, 15, 16, 17, 24, 25, 26], [27, 28, 29, 36, 37, 38, 45, 46, 47], [30, 31, 32, 39, 40, 41, 48, 49, 50], [33, 34, 35, 42, 43, 44, 51, 52, 53], [54, 55, 56, 63, 64, 65, 72, 73, 74], [57, 58, 59, 66, 67, 68, 75, 76, 77], [60, 61, 62, 69, 70, 71, 78, 79, 80]];
-        for (b = 0; b < 9; b++) {
+        for (let b = 0; b < 9; b++) {
             if ((boxes[b]).includes(cellArray.indexOf(whichCell)) === true) {
                 whichBox = whichBox.concat(boxes[b]);
                 let removeSelf = whichBox.indexOf(cellArray.indexOf(whichCell));
@@ -359,7 +356,7 @@ $(document).ready(function () {
                 break;
             }
         }
-        for (b1 = 0; b1 < 8; b1++) {
+        for (let b1 = 0; b1 < 8; b1++) {
             sameBox.push(cellArray[whichBox[b1]]);
             sameBoxText.push((cellArray[whichBox[b1]]).innerText);
         }
@@ -394,7 +391,7 @@ $(document).ready(function () {
         // If selected cell input is wrong, signal why and delete it.
         // Otherwise mark it as correct.
         let actualValue = whichSolution[cellArray.indexOf(whichCell)].toString();
-        for (i = 0; i < 8; i++) {
+        for (let i = 0; i < 8; i++) {
             if ($(sameBox[i]).text() === whichNum) {
                 itsWrong(sameBox, i);
                 break;
@@ -417,17 +414,17 @@ $(document).ready(function () {
                 }, 600);
             } else if (i === 7) {
                 if (sameRowText.includes("") === false) {
-                    for (k = 0; k < 8; k++) {
+                    for (let k = 0; k < 8; k++) {
                         time(k, sameRow);
                     }
                 }
                 if (sameColText.includes("") === false) {
-                    for (h = 0; h < 8; h++) {
+                    for (let h = 0; h < 8; h++) {
                         time(h, sameCol);
                     }
                 }
                 if (sameBoxText.includes("") === false) {
-                    for (j = 0; j < 8; j++) {
+                    for (let j = 0; j < 8; j++) {
                         time(j, sameBox);
                     }
                 }
